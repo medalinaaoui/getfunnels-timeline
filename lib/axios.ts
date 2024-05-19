@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`,
+  baseURL: "/api", // Next.js API route base URL
   headers: {
     "Content-Type": "application/json",
-    Authorization: process.env.CLICKUP_API_KEY,
   },
 });

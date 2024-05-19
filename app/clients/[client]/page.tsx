@@ -11,9 +11,7 @@ const ClientPage = ({ params }: any) => {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: [params.client, "client"],
     queryFn: () =>
-      axios
-        .get(`/folder/${params.client}/list`)
-        .then((response) => response.data),
+      axios.get(`/clients/${params.client}`).then((response) => response.data),
   });
 
   console.log(data);

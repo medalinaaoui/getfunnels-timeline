@@ -41,7 +41,7 @@ h1 {
   text-transform: uppercase;
 }
 
-span {
+/* span {
   opacity: 0.4;
   background: linear-gradient(
     91deg,
@@ -51,7 +51,7 @@ span {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
 .tracking-card {
   border-radius: 12px;
