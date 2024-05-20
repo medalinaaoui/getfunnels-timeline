@@ -3,9 +3,9 @@ import Logo from "@/public/logo-ds.png";
 
 const ProjectHero = () => {
   return (
-    <section className="bg-darkText text-lightText">
+    <section className="bg-darkText text-lightText py-14 px-5 min-h-screen flex flex-col">
       <div className="w-full flex justify-center">
-        <div className="w-24 aspect-square ">
+        <div className="w-32 ">
           <Image
             src={Logo}
             alt=""
@@ -14,6 +14,15 @@ const ProjectHero = () => {
             className="h-full w-full object-cover"
           />
         </div>
+      </div>
+
+      <div className="flex flex-col flex-1 items-center justify-center gap-6 w-10/12 mx-auto">
+        <h1 className="text-primary text-3xl">Jody Cavalie</h1>
+
+        <h2 className="text-6xl">
+          Lorem Ipsum est un texte d&apos;espace réservé couramment utilisé dans
+          les industries
+        </h2>
       </div>
     </section>
   );

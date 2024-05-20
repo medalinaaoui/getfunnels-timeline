@@ -61,19 +61,14 @@ h1 {
   backdrop-filter: blur(90px);
 }
 
-h3 {
-  background: linear-gradient(90deg, #fff 0%, #999 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+h2 {
+  color: #fff;
   text-align: center;
-  leading-trim: both;
-
-  text-edge: cap;
-  font-size: 22px;
+  font-family: Raitor;
+  font-size: 55px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 104.715%;
+  font-weight: 400;
+  line-height: normal;
 }
 
 input {
@@ -92,7 +87,7 @@ p {
 strong {
   font-weight: 400;
 }
-
+/* 
 .main-loader {
   width: 16px;
   height: 16px;
@@ -117,4 +112,4 @@ strong {
   100% {
     transform: rotate(360deg) translate(30px);
   }
-}
+} */
