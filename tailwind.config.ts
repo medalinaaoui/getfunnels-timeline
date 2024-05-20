@@ -9,11 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bgcolor: "#050200",
-        primary: "#F26615",
-        maincards: "#0E0E0E",
-        secondary: "#C5C5C5",
-        divider: "#474747",
+        bgcolor: "#FFF",
+        primary: "#8200FF",
+        // secondary: "#6B6B6B",
+        paragraph: "#6B6B6B",
+        darkText: "#000",
+        lightText: "#FFF",
       },
     },
   },
