@@ -25,7 +25,7 @@ const ProjectBar = () => {
 
 const DashedBar = () => {
   return (
-    <div className="border-l-[3px] border-dashed h-[90%] flex flex-col justify-center gap-8">
+    <div className="dashed-bar border-l-[3px] border-dashed h-[90%] flex flex-col justify-center gap-8">
       <div className="">
         <h5 className="-translate-x-8 bg-primary">Project</h5>
         <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">

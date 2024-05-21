@@ -1,7 +1,10 @@
 "use client";
 // import { useQuery } from "@tanstack/react-query";
 import ProjectHero from "./components/ProjectHero";
-
+import ProjectDetails from "./components/ProjectDetails";
+import ProjectVideoSection from "./components/ProjectVideoSection";
+import Meetings from "./components/Meetings";
+import StructureSection from "./components/StructureSection";
 // import Loader from "@/app/components/Loader";
 // import axios from "@/lib/axios";
 
@@ -19,6 +22,10 @@ const ProjectPage = ({ params }: any) => {
   return (
     <>
       <ProjectHero />
+      <ProjectDetails />
+      <ProjectVideoSection />
+      <Meetings />
+      <StructureSection />
     </>
   );
 };

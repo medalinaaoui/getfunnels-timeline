@@ -1,6 +1,6 @@
 import "@/app/ui/global.css";
 import TanStackProvider from "@/providers/TanStackProvider";
-import { PoppinsFont } from "@/app/ui/fonts";
+import { PoppinsFont, Raitor } from "@/app/ui/fonts";
 import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="bg-bgcolor text-white">
-      <body className={`${PoppinsFont.className} antialiased bg-bgcolor`}>
+      <body className={`${Raitor.className} antialiased bg-bgcolor`}>
         <TanStackProvider>
           <Toaster />
 
