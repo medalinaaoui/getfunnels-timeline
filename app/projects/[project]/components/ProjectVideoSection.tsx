@@ -26,9 +26,9 @@ const ProjectVideoSection = () => {
           </p>
         </div>
         <div className="">
-          <strong className="text-xs text-darkText text-center block mb-2">
+          <p className="text-xs text-darkText text-center block mb-2">
             Video de lexplication du project sur Funnelytics
-          </strong>
+          </p>
 
           <div className="w-full">
             <iframe

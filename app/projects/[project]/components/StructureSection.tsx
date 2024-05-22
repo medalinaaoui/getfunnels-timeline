@@ -35,11 +35,7 @@ const StepInfo = () => {
         <li className="flex items-center px-2 justify-between border-b-2 pb-2 mt-2">
           <span className="font-semibold">Opt-in Page</span>
           <div className="flex gap-2">
-            <ActionButton>
-              <span className="text-xl">
-                <IoEyeOutline />
-              </span>
-            </ActionButton>
+            <PreviewBtn />
             <ActionButton>
               <span className="text-xl">
                 <IoMdCheckmark />
@@ -54,5 +50,55 @@ const StepInfo = () => {
         </li>
       </ul>
     </article>
+  );
+};
+
+const PreviewBtn = () => {
+  const showModel = () => {
+    const modal = document.getElementById(
+      "my_modal_1"
+    ) as HTMLDialogElement | null;
+
+    if (modal) {
+      modal.showModal();
+    } else {
+      console.error('Element with ID "my_modal_1" not found.');
+    }
+  };
+
+  return (
+    <>
+      <ActionButton onClick={showModel}>
+        <span className="text-xl">
+          <IoEyeOutline />
+        </span>
+      </ActionButton>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box model-popup">
+          <h3 className="font-bold text-lg text-center text-primary">
+            Opt-in Page
+          </h3>
+
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="col-start-2 m-1">
+              <div>
+                <span>Page Opt-in</span>
+              </div>
+            </div>
+            <div className="col-start-1 m-1">02</div>
+            <div className=""></div>
+            <div className="col-start-2 m-1">03</div>
+            <div className="col-start-1 m-1">04</div>
+            <div className=""></div>
+          </div>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </>
   );
 };

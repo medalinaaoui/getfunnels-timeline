@@ -17,9 +17,9 @@ const ProjectHero = () => {
       </div>
 
       <div className="flex flex-col flex-1 items-center justify-center gap-6 w-10/12 mx-auto">
-        <h1 className="text-primary text-3xl">Jody Cavalie</h1>
+        <h1 className="text-primary text-xl">Jody Cavalie</h1>
 
-        <h2 className="text-6xl">
+        <h2 className="text-4xl">
           Lorem Ipsum est un texte d&apos;espace réservé couramment utilisé dans
           les industries
         </h2>

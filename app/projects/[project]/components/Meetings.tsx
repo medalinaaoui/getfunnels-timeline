@@ -21,14 +21,14 @@ const Meetings = () => {
           />
         </div>
         <div className="grid gap-3">
-          <article className="text-darkText">
-            <h3 className="text-2xl mb-2 font-semibold">Réunion planifiée</h3>
+          <article className="text-darkText mt-4">
+            <h3 className="text-xl mb-2 font-semibold">Réunion planifiée</h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               <ProjectSimpleButton href="" text="Réunion de 17/05/24" />
             </div>
           </article>
-          <article className="text-darkText">
-            <h3 className="text-2xl mb-2 font-semibold">Réunion planifiée</h3>
+          <article className="text-darkText mt-4">
+            <h3 className="text-xl mb-2 font-semibold">Réunion planifiée</h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               <ProjectSimpleButton href="" text="Réunion de 17/05/24" />
             </div>

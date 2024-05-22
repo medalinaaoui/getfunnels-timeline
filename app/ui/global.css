@@ -124,6 +124,11 @@ strong {
   background: #fbfbfb;
   box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.25);
 }
+.project-details-card span,
+.step-info-card span,
+.collapse-title {
+  font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
+}
 
 .project-details-card .inspiration-btn {
   border-radius: 10px;
@@ -135,4 +140,11 @@ strong {
   border: 1px solid rgba(0, 0, 0, 0.27);
   background: #f1f1f1;
   box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.04);
+}
+
+.model-popup {
+  border-radius: 10px;
+  border: 0.5px solid #fff;
+
+  background: #fbfbfb;
 }
