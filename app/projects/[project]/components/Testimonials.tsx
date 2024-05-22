@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { IoMdPlay } from "react-icons/io";
-
+import { testimonials } from "@/lib/needed-data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,8 +9,9 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import Image from "next/image";
 import testi1 from "@/public/testi1.png";
-import { ActionButton } from "@/app/components/Button";
+import { ActionButton, Button } from "@/app/components/Button";
 import Link from "next/link";
+import { MdOutlineClose } from "react-icons/md";
 // import "./styles.css";
 
 const Testimonials = () => {
@@ -39,75 +40,93 @@ const Testimonials = () => {
           modules={[Pagination, Keyboard, Mousewheel, Navigation]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <div className="w-full 1 relative">
-              <Image
-                src={testi1}
-                alt=""
-                width={1000}
-                height={1000}
-                className="h-full w-full object-contain"
+          {testimonials?.map((testi) => (
+            <SwiperSlide key={testi.id}>
+              <Testimonial
+                id={testi.id}
+                name={testi.name}
+                image={testi.image}
+                video={testi.video}
               />
-            </div>
-            <ActionButton className="absolute top-0 right-0 left-0 bottom-0 m-auto">
-              <Link href="#">
-                <span className="text-xl">
-                  <IoMdPlay />
-                </span>
-              </Link>
-            </ActionButton>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="w-full 2 relative">
-              <Image
-                src={testi1}
-                alt=""
-                width={1000}
-                height={1000}
-                className="h-full w-full object-contain"
-              />
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="w-full 3 relative">
-              <Image
-                src={testi1}
-                alt=""
-                width={1000}
-                height={1000}
-                className="h-full w-full object-contain"
-              />
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="w-full 4 relative">
-              <Image
-                src={testi1}
-                alt=""
-                width={1000}
-                height={1000}
-                className="h-full w-full object-contain"
-              />
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="w-full 5 relative">
-              <Image
-                src={testi1}
-                alt=""
-                width={1000}
-                height={1000}
-                className="h-full w-full object-contain"
-              />
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <Button>J’ajoute un témoignage</Button>
       </div>
     </section>
   );
 };
 export default Testimonials;
+
+const Testimonial = ({
+  id,
+  name,
+  image,
+  video,
+}: {
+  id: string;
+  name: string;
+  image: string;
+  video: string;
+}) => {
+  const showModel = () => {
+    const modal = document.getElementById(id) as HTMLDialogElement | null;
+
+    if (modal) {
+      modal.showModal();
+    } else {
+      console.error(`Element with ID ${id} not found.`);
+    }
+  };
+
+  return (
+    <>
+      <div className="w-full 1 relative">
+        <Image
+          src={image}
+          alt={name}
+          width={1000}
+          height={1000}
+          className="h-full w-full object-contain"
+        />
+      </div>
+      <ActionButton
+        onClick={showModel}
+        className="absolute top-0 right-0 left-0 bottom-0 m-auto"
+      >
+        <span className="text-xl">
+          <IoMdPlay />
+        </span>
+      </ActionButton>
+      <dialog id={id} className="modal">
+        <div className="modal-box p-8 model-popup">
+          <h3 className="font-bold text-lg text-center text-primary">{name}</h3>
+
+          <div className="grid">
+            <div className="w-full mt-4">
+              <iframe
+                title="video"
+                src={video}
+                width={1000}
+                height={1000}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="modal-action">
+            <form method="dialog">
+              <ActionButton className="absolute top-2 right-2">
+                <span className="text-xl">
+                  <MdOutlineClose />
+                </span>
+              </ActionButton>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </>
+  );
+};

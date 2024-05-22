@@ -10,3 +10,6 @@ export const PoppinsFont = Poppins({
 export const Raitor = localFont({
   src: "../../public/fonts/Raitor-Regular.ttf",
 });
+export const ClashDisplay = localFont({
+  src: "../../public/fonts/ClashDisplay/ClashDisplay-Variable.ttf",
+});
