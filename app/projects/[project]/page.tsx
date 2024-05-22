@@ -6,6 +6,7 @@ import ProjectVideoSection from "./components/ProjectVideoSection";
 import Meetings from "./components/Meetings";
 import StructureSection from "./components/StructureSection";
 import ShowOffSection from "./components/ShowOffSection";
+import Testimonials from "./components/Testimonials";
 // import Loader from "@/app/components/Loader";
 // import axios from "@/lib/axios";
 
@@ -28,6 +29,7 @@ const ProjectPage = ({ params }: any) => {
       <Meetings />
       <StructureSection />
       <ShowOffSection />
+      <Testimonials />
     </>
   );
 };
