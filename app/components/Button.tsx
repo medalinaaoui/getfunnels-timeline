@@ -30,3 +30,10 @@ export function ActionButton({ children, className, ...rest }: ButtonProps) {
     </button>
   );
 }
+export function BluredShip({ children, className, ...rest }: any) {
+  return (
+    <div {...rest} className={clsx("blured-ship", className)}>
+      {children}
+    </div>
+  );
+}

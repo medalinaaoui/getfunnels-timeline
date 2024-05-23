@@ -16,7 +16,7 @@ const ProjectVideoSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 w-11/12 mx-auto mt-4">
+      <div className="grid grid-cols-2 w-5/6 gap-6 mx-auto mt-4">
         <div className="grid gap-2">
           <p className="text-paragraph">
             {` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
@@ -33,7 +33,7 @@ const ProjectVideoSection = () => {
           <div className="w-full">
             <iframe
               title="video"
-              src="https://www.youtube.com/watch?v=gfU1iZnjRZM"
+              src="https://player.vimeo.com/video/587762157?autoplay=0&title=0&byline=0&wmode=transparent&autopause=0&transparent=0"
               width={1000}
               height={1000}
               className="w-full h-full object-cover"

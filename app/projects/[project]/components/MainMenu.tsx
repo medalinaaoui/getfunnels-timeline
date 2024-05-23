@@ -16,7 +16,7 @@ const MainMenu = () => {
         title="show menu"
         className={`px-2 py-1 ${
           !showMenu ? "top-8 opacity-100" : "-top-40 opacity-70"
-        } cursor-pointer rounded-3xl bg-primary fixed right-8 transition-all duration-700 flex items-center`}
+        } cursor-pointer rounded-3xl bg-primary fixed right-8 transition-all duration-700 flex items-center z-50`}
       >
         <div className="w-8 h-8 aspect-square mr-2">
           <Image
@@ -35,7 +35,7 @@ const MainMenu = () => {
       <nav
         className={`px-2 py-1 ${
           showMenu ? "top-8 opacity-100" : "-top-40 opacity-70"
-        } left-0 right-0 w-fit mx-auto cursor-pointer rounded-3xl bg-primary fixed  shadow-md  transition-all duration-700 flex items-center`}
+        } left-0 right-0 w-fit mx-auto cursor-pointer rounded-3xl bg-primary fixed  shadow-md  transition-all duration-700 flex items-center z-50`}
       >
         <div className="w-8 h-8 aspect-square mr-2">
           <Image

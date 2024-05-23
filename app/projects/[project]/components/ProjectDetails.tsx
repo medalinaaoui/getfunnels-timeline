@@ -3,11 +3,14 @@ import { FiExternalLink } from "react-icons/fi";
 import { LiaToolsSolid } from "react-icons/lia";
 import { FiUser } from "react-icons/fi";
 import { RiBillFill } from "react-icons/ri";
+import { getUrlsArray } from "@/lib/utils";
 
-const ProjectDetails = () => {
+const ProjectDetails = ({ urlsString }: { urlsString: string }) => {
+  const inspirations = getUrlsArray(urlsString);
+
   return (
     <section className="bg-darkText text-lightText pt-14 px-5 grid grid-cols-3 gap-3">
-      <Inspirations />
+      <Inspirations inspirations={inspirations} />
       <ProjectStructure />
       <AdditionalInfo />
     </section>
@@ -15,12 +18,18 @@ const ProjectDetails = () => {
 };
 export default ProjectDetails;
 
-const Inspirations = () => {
+const Inspirations = ({ inspirations }: { inspirations: string[] }) => {
   return (
     <article className="">
       <h3 className="text-xl mb-2">Inspirations</h3>
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
-        <ProjectSimpleButton href="" text="Inspiration 1" />
+        {inspirations.map((inspiration, index) => (
+          <ProjectSimpleButton
+            key={inspiration}
+            href={inspiration}
+            text={`Inspiration ${index + 1}`}
+          />
+        ))}
       </div>
     </article>
   );

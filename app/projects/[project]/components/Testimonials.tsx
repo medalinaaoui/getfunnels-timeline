@@ -26,9 +26,7 @@ const Testimonials = () => {
 
       <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
         <Swiper
-          onSlideChange={(s) => console.log("slide change: ", s)}
           slidesPerView={4}
-          onSwiper={(e) => console.log(e)}
           spaceBetween={30}
           centeredSlides={true}
           navigation={true}

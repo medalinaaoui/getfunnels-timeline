@@ -87,12 +87,12 @@ p {
 strong {
   font-weight: 400;
 }
-/* 
+
 .main-loader {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #f26615;
+  background: #8200ff;
   position: relative;
 }
 .main-loader:before,
@@ -101,7 +101,7 @@ strong {
   position: absolute;
   border-radius: 50%;
   inset: 0;
-  background: #c5c5c5;
+  background: #000;
   transform: rotate(0deg) translate(30px);
   animation: rotate 1s ease infinite;
 }
@@ -112,7 +112,7 @@ strong {
   100% {
     transform: rotate(360deg) translate(30px);
   }
-} */
+}
 
 .dashed-bar ul li {
   font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
@@ -147,4 +147,45 @@ strong {
   border: 0.5px solid #fff;
 
   background: #fbfbfb;
+}
+
+footer * {
+  font-family: "__ClashDisplay_f44f1f", "__ClashDisplay_Fallback_f44f1f";
+}
+
+.project-hero-section {
+  /* background-image: url(https://cdn.pixabay.com/photo/2019/01/02/10/20/iceland-3908498_1280.jpg); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  position: relative;
+}
+
+.project-hero-section .bg-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: ; */
+  background-image: linear-gradient(
+    to top,
+    #000000f7,
+    #00000077,
+    rgba(0, 0, 0, 0.5)
+  );
+  z-index: -1;
+  display: block;
+}
+
+.blured-ship {
+  width: 300px;
+  height: 300px;
+  background-color: #8200ff;
+  filter: blur(160px);
+  position: absolute;
+  z-index: 2;
 }

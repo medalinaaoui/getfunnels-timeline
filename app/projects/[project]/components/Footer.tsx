@@ -6,9 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { ClashDisplay } from "@/app/ui/fonts";
 const Footer = () => {
   return (
-    <footer
-      className={`${ClashDisplay.className}bg-darkText text-lightText py-14 px-5`}
-    >
+    <footer className={`bg-darkText text-lightText py-14 px-5`}>
       <div className="flex justify-between w-full p-4 pb-8 border-b border-lightText">
         <div>
           <div className="w-36 ">
@@ -22,7 +20,9 @@ const Footer = () => {
           </div>
           <ul className="flex items-center gap-4 mt-8">
             <li className="grid gap-2">
-              <h6 className="font-semibold">Phone:</h6>
+              <h6 className={`font-semibold ${ClashDisplay.className}`}>
+                Phone:
+              </h6>
               <Link href="tel:+1-123-456-7890">+1-123-456-7890</Link>
             </li>
             <li className="grid gap-2">

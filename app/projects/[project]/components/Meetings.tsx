@@ -2,12 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { CiMicrophoneOn } from "react-icons/ci";
 import MeetingImage from "@/public/GF_Meeting_Section_Image_GF.png";
+import { BluredShip } from "@/app/components/Button";
 
 const Meetings = () => {
   return (
     <section className="pb-14">
-      <div className="bg-darkText text-lightText py-14 px-5">
+      <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative">
         <h2>Réunion</h2>
+        <BluredShip className="top-0 right-0" />
+        <BluredShip className="bottom-0 left-0" />
       </div>
 
       <div className="pt-8 grid grid-cols-2 gap-3 px-12 w-11/12 mx-auto">
