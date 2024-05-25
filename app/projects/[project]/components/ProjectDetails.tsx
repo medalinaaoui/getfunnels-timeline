@@ -5,14 +5,27 @@ import { FiUser } from "react-icons/fi";
 import { RiBillFill } from "react-icons/ri";
 import { getUrlsArray } from "@/lib/utils";
 
-const ProjectDetails = ({ urlsString }: { urlsString: string }) => {
-  const inspirations = getUrlsArray(urlsString);
+import { MdUnfoldMore } from "react-icons/md";
+const ProjectDetails = ({
+  urlsString,
+  AdditionalInfo,
+  tasks,
+}: {
+  urlsString: string;
+  AdditionalInfo: AdditionalInfoI;
+  tasks: any;
+}) => {
+  const inspirations = urlsString ? getUrlsArray(urlsString) : [];
 
   return (
     <section className="bg-darkText text-lightText pt-14 px-5 grid grid-cols-3 gap-3">
       <Inspirations inspirations={inspirations} />
-      <ProjectStructure />
-      <AdditionalInfo />
+      <ProjectStructure tasks={tasks} />
+      <AdditionalInfoComponent
+        responsable={AdditionalInfo.responsable}
+        tools={AdditionalInfo.tools}
+        devisUrl={AdditionalInfo.devisUrl}
+      />
     </section>
   );
 };
@@ -35,20 +48,28 @@ const Inspirations = ({ inspirations }: { inspirations: string[] }) => {
   );
 };
 
-const ProjectStructure = () => {
+const ProjectStructure = ({ tasks }: any) => {
   return (
     <article className="">
       <h3 className="text-xl mb-2">Structure du project</h3>
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
-        <ProjectSimpleCollapse title="Lorem Ipsum" text="Hello" />
-        <ProjectSimpleCollapse title="Lorem Ipsum" text="Hello" />
-        <ProjectSimpleCollapse title="Lorem Ipsum" text="Hello" />
+        {tasks.map((task: any) => (
+          <ProjectSimpleCollapse
+            key={task.id}
+            title={task.name}
+            subs={task.subtasks}
+          />
+        ))}
       </div>
     </article>
   );
 };
 
-const AdditionalInfo = () => {
+const AdditionalInfoComponent = ({
+  responsable,
+  tools,
+  devisUrl,
+}: AdditionalInfoI) => {
   return (
     <article className="">
       <h3 className="text-xl mb-2">Infos Supplémentaires</h3>
@@ -56,14 +77,14 @@ const AdditionalInfo = () => {
         <ProjectIconCollapse
           icon={<FiUser />}
           title="Nom du responsable du project "
-          text="Mohamed Ali"
+          text={responsable}
         />
         <ProjectIconCollapse
           title="Platformes & Outils"
-          text="ClickFunnels - Brevo"
+          text={tools}
           icon={<LiaToolsSolid />}
         />
-        <ProjectIconButton href="" text="Devis" icon={<RiBillFill />} />
+        <ProjectIconButton href={devisUrl} text="Devis" icon={<RiBillFill />} />
       </div>
     </article>
   );
@@ -119,17 +140,53 @@ const ProjectIconButton = ({
 
 const ProjectSimpleCollapse = ({
   title,
-  text,
+  subs,
 }: {
   title: string;
-  text: string;
+  subs: any;
 }) => {
+  // const sub = [
+  //   {
+  //     name: "a",
+  //     subtasks: [{ name: "aa" }, { name: "ab" }, { name: "ac" }],
+  //   },
+  //   {
+  //     name: "b",
+  //     subtasks: [{ name: "ba" }, { name: "bb" }, { name: "bc" }],
+  //   },
+  // ];
+
   return (
     <div className="collapse collapse-arrow inspiration-btn h-fit">
       <input title="input" type="radio" name="my-accordion-2" defaultChecked />
       <div className="collapse-title text-lg">{title}</div>
       <div className="collapse-content">
-        <p className="text-darkText">{text}</p>
+        {subs?.map((subtask: any, i: number) => (
+          <div
+            className={`bg-[#C9C9C9] p-2 rounded-lg ${i <= 0 ? "" : "mt-3"}`}
+            key={i}
+          >
+            <details className="collapse">
+              <summary className="collapse-title p-0 max-h-4 -mb-7">
+                <div className="flex items-center w-full justify-between">
+                  <span className="">
+                    {i + 1}. {subtask.name}
+                  </span>
+                  <span className="text-base">
+                    <MdUnfoldMore />
+                  </span>
+                </div>
+              </summary>
+              <div className="collapse-content">
+                <ul className="list-inside list-disc ml-2">
+                  {subtask.subtasks.map((subb: any, i: number) => (
+                    <li key={`subb ${i}`}>{subb.name}</li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -144,8 +201,11 @@ const ProjectIconCollapse = ({
   icon: any;
 }) => {
   return (
-    <div className="collapse collapse-arrow inspiration-btn h-fit">
-      <input title="input" type="radio" name="my-accordion-2" />
+    <div
+      defaultChecked
+      className="collapse collapse-arrow inspiration-btn h-fit"
+    >
+      <input defaultChecked title="input" type="radio" name="my-accordion-2" />
       <div className="collapse-title text-lg flex items-center gap-2">
         <span className="text-lg">{icon}</span>
         <span className="truncate">{title}</span>
@@ -156,3 +216,9 @@ const ProjectIconCollapse = ({
     </div>
   );
 };
+
+interface AdditionalInfoI {
+  responsable: string;
+  tools: string;
+  devisUrl: string;
+}

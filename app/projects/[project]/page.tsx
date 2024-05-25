@@ -40,8 +40,23 @@ const ProjectPage = ({ params }: any) => {
         description={data?.data?.tasks[0]?.description}
         bgImage={details["Projet / Lien de Background"]}
       />
-      <ProjectDetails urlsString={details["Projet / Liens d'inspirations"]} />
-      <ProjectVideoSection />
+      <ProjectDetails
+        tasks={data?.structure?.subtasks}
+        urlsString={details["Projet / Liens d'inspirations"]}
+        AdditionalInfo={{
+          responsable: details["Projet / Responsable du projet"] || "",
+          tools: details["Projet / Plateforme & Outils"] || "",
+          devisUrl: details["Offre / Lien de page"] || "",
+        }}
+      />
+
+      <ProjectVideoSection
+        videoUrl={details["Stratégie / Lien de vidéo"] || ""}
+        description={
+          details["Stratégie / Description"] ||
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam autem porro, facilis velit minima deserunt"
+        }
+      />
       <Meetings />
       <StructureSection />
       <ShowOffSection />

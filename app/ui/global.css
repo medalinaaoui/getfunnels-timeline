@@ -132,7 +132,7 @@ strong {
 
 .project-details-card .inspiration-btn {
   border-radius: 10px;
-  background: #c7c0c0;
+  background: #e1dada;
   box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.06);
 }
 .step-info-card {
@@ -188,4 +188,7 @@ footer * {
   filter: blur(160px);
   position: absolute;
   z-index: 2;
+}
+.project-details-card li {
+  font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
 }
