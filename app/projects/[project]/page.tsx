@@ -58,7 +58,7 @@ const ProjectPage = ({ params }: any) => {
         }
       />
       <Meetings />
-      <StructureSection />
+      <StructureSection tasks={data?.structure?.subtasks} />
       <ShowOffSection />
       <Testimonials />
       <Footer />

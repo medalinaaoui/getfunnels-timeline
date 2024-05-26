@@ -76,7 +76,7 @@ const AdditionalInfoComponent = ({
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
         <ProjectIconCollapse
           icon={<FiUser />}
-          title="Nom du responsable du project "
+          title="Responsable du project "
           text={responsable}
         />
         <ProjectIconCollapse
@@ -179,7 +179,7 @@ const ProjectSimpleCollapse = ({
               </summary>
               <div className="collapse-content">
                 <ul className="list-inside list-disc ml-2">
-                  {subtask.subtasks.map((subb: any, i: number) => (
+                  {subtask?.subtasks?.map((subb: any, i: number) => (
                     <li key={`subb ${i}`}>{subb.name}</li>
                   ))}
                 </ul>

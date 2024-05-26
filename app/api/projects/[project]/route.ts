@@ -19,7 +19,9 @@ export async function GET(req: any, context: any) {
       }
     );
 
-    const taskId = response?.data?.tasks[1].id;
+    const taskId = response?.data?.tasks.find(
+      (obj: any) => obj.name === "Status de projet"
+    ).id;
 
     const structureResponse = await axios.get(
       `https://api.clickup.com/api/v2/task/${taskId}?include_subtasks=true`,
