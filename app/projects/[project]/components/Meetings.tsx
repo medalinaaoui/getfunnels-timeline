@@ -1,10 +1,26 @@
 import Image from "next/image";
-import Link from "next/link";
-import { CiMicrophoneOn } from "react-icons/ci";
+
 import MeetingImage from "@/public/GF_Meeting_Section_Image_GF.png";
 import { BluredShip } from "@/app/components/Button";
+import axios from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Meeting from "./Meeting";
 
-const Meetings = () => {
+const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
+  const {
+    data: projectDetailsData,
+    isError: projectDetailsisError,
+    isLoading: projectDetailsisLoading,
+    error: projectDetailsError,
+  } = useQuery({
+    queryKey: [projectDetailsID, "all project details"],
+    queryFn: () =>
+      axios.get(`/task/${projectDetailsID}`).then((response) => response.data),
+    enabled: projectDetailsID ? true : false,
+  });
+
+  // console.log("from Meetings: ", projectDetailsData);
+
   return (
     <section className="pb-14">
       <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative">
@@ -27,13 +43,19 @@ const Meetings = () => {
           <article className="text-darkText mt-4">
             <h3 className="text-xl mb-2 font-semibold">Réunion planifiée</h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
-              <ProjectSimpleButton href="" text="Réunion de 17/05/24" />
+              {projectDetailsData?.subtasks
+                ?.find((task: any) => task.name === "Réunions")
+                ?.subtasks?.map((sub: any) => {
+                  if (sub.status.status === "to do") {
+                    return <Meeting key={sub.id} id={sub.id} />;
+                  }
+                })}
             </div>
           </article>
           <article className="text-darkText mt-4">
             <h3 className="text-xl mb-2 font-semibold">Réunion passer</h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
-              <ProjectSimpleButton href="" text="Réunion de 17/05/24" />
+              {/* <Meeting href="" text="Réunion de 17/05/24" /> */}
             </div>
           </article>
         </div>
@@ -43,22 +65,16 @@ const Meetings = () => {
 };
 export default Meetings;
 
-const ProjectSimpleButton = ({
-  href,
-  text,
-}: {
-  href: string;
-  text: string;
-}) => {
-  return (
-    <Link
-      href={href}
-      className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
-    >
-      <span className="text-lg">{text}</span>
-      <span className="text-lg">
-        <CiMicrophoneOn />
-      </span>
-    </Link>
-  );
-};
+// const Meeting = ({ meetingId }: { meetingId: string }) => {
+//   return (
+//     <Link
+//       href={meetingId}
+//       className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
+//     >
+//       <span className="text-lg">{meetingId}</span>
+//       <span className="text-lg">
+//         <CiMicrophoneOn />
+//       </span>
+//     </Link>
+//   );
+// };

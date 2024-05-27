@@ -29,7 +29,7 @@ const ProjectPage = ({ params }: any) => {
     },
     {} as { [key: string]: any }
   );
-  console.log("🚀 ~ ProjectPage ~ details:", details);
+  // console.log("🚀 ~ ProjectPage ~ details:", details);
 
   return isLoading ? (
     <Loader />
@@ -52,12 +52,19 @@ const ProjectPage = ({ params }: any) => {
 
       <ProjectVideoSection
         videoUrl={details["Stratégie / Lien de vidéo"] || ""}
-        description={
-          details["Stratégie / Description"] ||
-          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam autem porro, facilis velit minima deserunt"
+        projectDetailsID={
+          data?.data?.tasks?.find(
+            (tas: any) => tas?.name === "Détails de projet"
+          ).id
         }
       />
-      <Meetings />
+      <Meetings
+        projectDetailsID={
+          data?.data?.tasks?.find(
+            (tas: any) => tas?.name === "Détails de projet"
+          ).id
+        }
+      />
       <StructureSection tasks={data?.structure?.subtasks} />
       <ShowOffSection />
       <Testimonials />

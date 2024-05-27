@@ -1,12 +1,28 @@
 // import Image from "next/image";
-
+import axios from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import Description from "./StrategieDescription";
 const ProjectVideoSection = ({
-  description,
   videoUrl,
+  projectDetailsID,
 }: {
-  description: string;
   videoUrl: string;
+  projectDetailsID: string;
 }) => {
+  const {
+    data: projectDetailsData,
+    isError: projectDetailsisError,
+    isLoading: projectDetailsisLoading,
+    error: projectDetailsError,
+  } = useQuery({
+    queryKey: [projectDetailsID, "all project details"],
+    queryFn: () =>
+      axios.get(`/task/${projectDetailsID}`).then((response) => response.data),
+    enabled: projectDetailsID ? true : false,
+  });
+
+  console.log("from project video sec: ", projectDetailsData);
+
   return (
     <section className="py-14 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
@@ -24,7 +40,15 @@ const ProjectVideoSection = ({
 
       <div className="grid grid-cols-2 w-5/6 gap-6 mx-auto mt-4">
         <div className="grid gap-2 items-center">
-          <p className="text-paragraph">{description}</p>
+          {!projectDetailsisLoading && (
+            <Description
+              id={
+                projectDetailsData?.subtasks?.find(
+                  (task: any) => task.name === "Stratégie"
+                ).id
+              }
+            />
+          )}
           <p className="text-primary">
             Duis aute irure dolor in reprehenderit in voluptate
           </p>

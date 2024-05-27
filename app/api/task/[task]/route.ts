@@ -6,11 +6,11 @@ import { NextResponse } from "next/server";
 export async function GET(req: any, context: any) {
   const { params } = context;
 
-  let project = params.project;
+  let task = params.task;
 
   try {
     const response = await axios.get(
-      `https://api.clickup.com/api/v2/task/${project}/?include_subtasks=true`,
+      `https://api.clickup.com/api/v2/task/${task}/?include_subtasks=true&include_markdown_description=true`,
       {
         headers: {
           "Content-Type": "application/json",
