@@ -12,7 +12,9 @@ export default function RootLayout({
     <html className="bg-bgcolor text-white">
       <body className={`${Raitor.className} antialiased bg-bgcolor`}>
         <TanStackProvider>
-          <Toaster />
+          <div className="my-toaster">
+            <Toaster />
+          </div>
 
           {children}
         </TanStackProvider>

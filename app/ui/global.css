@@ -192,3 +192,16 @@ footer * {
 .project-details-card li {
   font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
 }
+
+.my-toaster * {
+  font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
+  text-align: center;
+  /* font-size: 14; */
+}
+
+.input {
+  border-radius: 10px;
+  background: #dbcbcb;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.06);
+  font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
+}

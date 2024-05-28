@@ -1,7 +1,5 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
-import { IoEyeOutline } from "react-icons/io5";
 import { IoMdCheckmark } from "react-icons/io";
-import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
 import { Button } from "@/app/components/Button";
 import { ActionButton } from "@/app/components/Button";
@@ -13,11 +11,21 @@ const ValideTask = ({ id }: { id: string }) => {
     const modal = document.getElementById(
       `${id}Valide`
     ) as HTMLDialogElement | null;
-
     if (modal) {
       modal.showModal();
     } else {
       console.error("modal not found.", `${id} Valide`);
+    }
+  };
+
+  const hideModel = () => {
+    const modal = document.getElementById(
+      `${id}Valide`
+    ) as HTMLDialogElement | null;
+    if (modal) {
+      modal.close();
+    } else {
+      console.error("Modal not found.", `${id}Valide`);
     }
   };
 
@@ -26,30 +34,34 @@ const ValideTask = ({ id }: { id: string }) => {
       return await axios.post(`/task/${id}`, commentData);
     },
     onSuccess: (response: any) => {
+      hideModel();
       console.log("🚀 ~ ValideTask ~ response:", response);
-      toast.success("message sent", {
+      toast.success("Validation envoyée avec succès.", {
         style: {
           borderRadius: "10px",
-          background: "#474747",
+          background: "#8200FF",
           color: "#fff",
         },
       });
     },
     onError: (error: any) => {
       console.log("🚀 ~ ValideTask ~ error:", error);
-      toast.error("couldn't send a message", {
-        style: {
-          borderRadius: "10px",
-          background: "#474747",
-          color: "#fff",
-        },
-      });
+      toast.error(
+        "Une erreur s'est produite lors de l'envoi de la vérification.",
+        {
+          style: {
+            borderRadius: "10px",
+            background: "#8200FF",
+            color: "#fff",
+          },
+        }
+      );
     },
   });
 
   const handleCommentSent = () => {
     validTaskMutation.mutate({
-      comment_text: "comment sent",
+      comment_text: "Le client a donné son feu vert pour cette tâche",
     });
   };
 
