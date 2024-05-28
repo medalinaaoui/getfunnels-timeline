@@ -55,7 +55,13 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
           <article className="text-darkText mt-4">
             <h3 className="text-xl mb-2 font-semibold">Réunion passer</h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
-              {/* <Meeting href="" text="Réunion de 17/05/24" /> */}
+              {projectDetailsData?.subtasks
+                ?.find((task: any) => task.name === "Réunions")
+                ?.subtasks?.map((sub: any) => {
+                  if (sub.status.status !== "to do") {
+                    return <Meeting passed={true} key={sub.id} id={sub.id} />;
+                  }
+                })}
             </div>
           </article>
         </div>

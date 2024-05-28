@@ -2,7 +2,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
-
+import ValideTask from "./ValideTask";
 import { ActionButton } from "@/app/components/Button";
 const StructureSection = ({ tasks }: { tasks: any }) => {
   return (
@@ -47,11 +47,7 @@ const StepInfo = ({ task }: { task: any }) => {
                 task={subtask.name}
                 subtasks={subtask.subtasks}
               />
-              <ActionButton>
-                <span className="text-xl">
-                  <IoMdCheckmark />
-                </span>
-              </ActionButton>
+              <ValideTask id={subtask.id} />
               <ActionButton>
                 <span className="text-xl">
                   <MdOutlineEdit />
