@@ -1,14 +1,13 @@
-import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import { Button } from "@/app/components/Button";
 import { ActionButton } from "@/app/components/Button";
-import toast from "react-hot-toast";
-import axios from "@/lib/axios";
+import Note from "./sendComments/Note";
 import { useState } from "react";
-import { TextArea } from "@/app/components/Input";
-
-import { IoIosArrowRoundBack } from "react-icons/io";
+import MeetingRequest from "./sendComments/MeetingRequest";
+import InsertLink from "./sendComments/InsertLink";
+import UploadFile from "./sendComments/UploadFile";
 
 const ModifyTask = ({ id }: { id: string }) => {
   const showModel = () => {
@@ -32,43 +31,6 @@ const ModifyTask = ({ id }: { id: string }) => {
       console.error("Modal not found.", `${id}Modify`);
     }
   };
-
-  const validTaskMutation: UseMutationResult = useMutation({
-    mutationFn: async (commentData) => {
-      return await axios.post(`/task/${id}`, commentData);
-    },
-    onSuccess: (response: any) => {
-      hideModel();
-      console.log("🚀 ~ ModifyTask ~ response:", response);
-      toast.success("Validation envoyée avec succès.", {
-        style: {
-          borderRadius: "10px",
-          background: "#8200FF",
-          color: "#fff",
-        },
-      });
-    },
-    onError: (error: any) => {
-      console.log("🚀 ~ ModifyTask ~ error:", error);
-      toast.error(
-        "Une erreur s'est produite lors de l'envoi de la vérification.",
-        {
-          style: {
-            borderRadius: "10px",
-            background: "#8200FF",
-            color: "#fff",
-          },
-        }
-      );
-    },
-  });
-
-  const handleCommentSent = () => {
-    validTaskMutation.mutate({
-      comment_text: "Le client a donné son feu vert pour cette tâche",
-    });
-  };
-
   const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
   const handleOpenModal = (content: JSX.Element | null) => {
     setModalContent(content);
@@ -82,41 +44,59 @@ const ModifyTask = ({ id }: { id: string }) => {
         </span>
       </ActionButton>
       <dialog id={`${id}Modify`} className="modal">
-        <div className="modal-box model-popup min-h-[350px]">
-          <h3 className="font-bold text-lg text-center text-primary">
-            Lorem Ipsum est un texte
-          </h3>
-
+        <div className="modal-box model-popup min-h-[350px] flex justify-center items-center">
           {modalContent ? (
             modalContent
           ) : (
-            <div className="flex flex-col gap-2 items-center mt-6">
-              <Button
-                className="w-10/12 justify-center"
-                onClick={() => handleOpenModal(<Note />)}
-              >
-                Note supplémentaire
-              </Button>
-              <Button
-                className="w-10/12 justify-center"
-                onClick={() => handleOpenModal(<div>Content for Button 2</div>)}
-              >
-                Demander un réunion
-              </Button>
-              <Button
-                className="w-10/12 justify-center"
-                onClick={() => handleOpenModal(<div>Content for Button 3</div>)}
-              >
-                Insérer un lien
-              </Button>
-              <Button
-                className="w-10/12 justify-center"
-                onClick={() => handleOpenModal(<div>Content for Button 3</div>)}
-              >
-                Ajouter un document
-              </Button>
+            <div>
+              <h3 className="font-bold text-lg text-center text-primary">
+                Lorem Ipsum est un texte out
+              </h3>
+              <div className="flex flex-col gap-2 items-center mt-1">
+                <Button
+                  className="w-10/12 justify-center"
+                  onClick={() =>
+                    handleOpenModal(
+                      <Note id={id} closeModel={() => hideModel()} />
+                    )
+                  }
+                >
+                  Note supplémentaire
+                </Button>
+                <Button
+                  className="w-10/12 justify-center"
+                  onClick={() =>
+                    handleOpenModal(
+                      <MeetingRequest id={id} closeModel={() => hideModel()} />
+                    )
+                  }
+                >
+                  Demander un réunion
+                </Button>
+                <Button
+                  className="w-10/12 justify-center"
+                  onClick={() =>
+                    handleOpenModal(
+                      <InsertLink id={id} closeModel={() => hideModel()} />
+                    )
+                  }
+                >
+                  Insérer un lien
+                </Button>
+                <Button
+                  className="w-10/12 justify-center"
+                  onClick={() =>
+                    handleOpenModal(
+                      <UploadFile id={id} closeModel={() => hideModel()} />
+                    )
+                  }
+                >
+                  Ajouter un document
+                </Button>
+              </div>
             </div>
           )}
+
           <div className="modal-action">
             <div className="w-full">
               <form method="dialog">
@@ -128,7 +108,7 @@ const ModifyTask = ({ id }: { id: string }) => {
               </form>
               <ActionButton
                 onClick={() => handleOpenModal(null)}
-                className="absolute top-2 left-2 bg-transparent"
+                className="absolute top-2 left-2 bg-transparent border border-black"
               >
                 <span className="text-2xl text-darkText">
                   <IoIosArrowRoundBack />
@@ -143,19 +123,3 @@ const ModifyTask = ({ id }: { id: string }) => {
 };
 
 export default ModifyTask;
-
-const Note = () => {
-  return (
-    <div className="flex flex-col items-center gap-4 mt-6">
-      <p className="text-xs text-center text-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        consequat.
-      </p>
-      <TextArea
-        className="w-full sm:w-full min-h-[140px]"
-        placeholder="note..."
-      />
-    </div>
-  );
-};
