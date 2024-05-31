@@ -3,6 +3,10 @@ import { MdOutlineClose } from "react-icons/md";
 import ValideTask from "./ValideTask";
 import { ActionButton } from "@/app/components/Button";
 import ModifyTask from "./ModifyTask";
+import { formatData, isDone, isNow } from "@/lib/utils";
+import { DisabledModifyTask } from "./ModifyTask";
+import Link from "next/link";
+import { Donegal_One } from "next/font/google";
 const StructureSection = ({ tasks }: { tasks: any }) => {
   return (
     <section className="py-14 px-5">
@@ -105,35 +109,84 @@ const PreviewBtn = ({
 };
 
 const TimeLine = ({ subtasks }: { subtasks: any }) => {
+  console.log("🚀 ~ TimeLine ~ subtasks:", subtasks);
+
   return (
     <ul className="timeline timeline-vertical mt-6">
-      {subtasks.map((item: any, i: number) => (
-        <li key={i}>
-          {i !== 0 ? <hr className="bg-primary" /> : ""}
-          <div
-            className={`timeline-${
-              i % 2 == 0 ? "start" : "end"
-            } timeline-box bg-transparent`}
-          >
-            {item.name}
-          </div>
-          <div className="timeline-middle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-5 h-5 text-primary"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clipRule="evenodd"
+      {subtasks.map((item: any, i: number) => {
+        // const status = ?.status;
+        const done = isDone(item?.status);
+        const now = isNow(item?.status);
+
+        return (
+          <li key={i}>
+            {i !== 0 ? (
+              <hr
+                className={`${
+                  done
+                    ? "bg-greenCheck"
+                    : now
+                    ? "bg-primary"
+                    : "bg-primary opacity-30"
+                }  `}
               />
-            </svg>
-          </div>
-          {i !== subtasks.length - 1 && <hr className="bg-primary" />}
-        </li>
-      ))}
+            ) : (
+              ""
+            )}
+            <div
+              className={`timeline-${i % 2 == 0 ? "start" : "end"} ${
+                done
+                  ? "bg-greenCheck border-greenCheck text-white"
+                  : now
+                  ? "bg-primary"
+                  : "bg-primary opacity-30"
+              } timeline-box op bg-transparent border-primary flex flex-col justify-center gap-1 min-w-[170px]`}
+            >
+              <span className="text-center">{item.name}</span>
+              <span className="text-center text-xs -mt-1 text-paragraph">
+                {item?.due_date ? formatData(item?.due_date) : "--/--/----"}
+              </span>
+
+              <div className="flex gap-2 justify-center">
+                <PreviewLink done={done} url={""} />
+                {!done && <ValideTask id={item.id} />}
+                {!done && <ModifyTask id={item.id} />}
+              </div>
+            </div>
+            <div className={`timeline-middle`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className={`w-5 h-5  ${
+                  done
+                    ? "text-greenCheck "
+                    : now
+                    ? "text-primary"
+                    : "text-primary opacity-30"
+                }`}
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+            {i !== subtasks.length - 1 && (
+              <hr
+                className={`${
+                  done
+                    ? "bg-greenCheck"
+                    : now
+                    ? "bg-primary"
+                    : "bg-primary opacity-30"
+                }  `}
+              />
+            )}
+          </li>
+        );
+      })}
       {/* 
       <li>
         <div className="timeline-start timeline-box bg-transparent">
@@ -231,5 +284,17 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
         </div>
       </li> */}
     </ul>
+  );
+};
+
+const PreviewLink = ({ url, done }: { url: string; done: boolean }) => {
+  return (
+    <ActionButton className={done ? "bg-white" : ""}>
+      <Link href={url}>
+        <span className={`text-xl ${done ? "text-greenCheck" : ""}`}>
+          <IoEyeOutline />
+        </span>
+      </Link>
+    </ActionButton>
   );
 };

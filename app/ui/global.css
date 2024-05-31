@@ -205,3 +205,8 @@ footer * {
   box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.06);
   font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
 }
+
+.bg-greenCheck {
+  --tw-bg-opacity: 1;
+  background-color: rgb(135 179 45 / var(--tw-bg-opacity)) !important;
+}

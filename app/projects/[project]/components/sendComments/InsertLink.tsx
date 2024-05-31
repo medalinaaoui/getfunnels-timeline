@@ -12,7 +12,7 @@ const InsertLink = ({ id, closeModel }: { id: string; closeModel: any }) => {
     if (comment) {
       const formatedComment = `Le client a inséré un lien pour cette tâche:
 
-      ${comment}
+${comment}
       `;
 
       sendComment.mutate({

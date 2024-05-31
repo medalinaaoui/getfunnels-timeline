@@ -15,6 +15,8 @@ const config: Config = {
         paragraph: "#6B6B6B",
         darkText: "#000",
         lightText: "#FFF",
+        disabled: "#e1dada",
+        greenCheck: "#1bb32d",
       },
     },
   },

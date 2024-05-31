@@ -12,7 +12,7 @@ const Note = ({ id, closeModel }: { id: string; closeModel: any }) => {
     if (comment) {
       const formatedComment = `Le client a envoyé une note supplémentaire pour cette tâche:
 
-      ${comment}
+${comment}
       `;
 
       sendComment.mutate({

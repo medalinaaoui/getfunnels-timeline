@@ -1,57 +1,75 @@
-import { useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Input } from "@/app/components/Input";
 import { Button } from "@/app/components/Button";
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import useSendCommentkMutation from "@/lib/sendComment";
 import axios from "@/lib/axios";
 import toast from "react-hot-toast";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "@/lib/firebase";
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 const UploadFile = ({ id, closeModel }: { id: string; closeModel: any }) => {
-  const validTaskMutation: UseMutationResult = useMutation({
-    mutationFn: async (formData) => {
-      return await axios.post(`/attachement/${id}`, formData);
-    },
-    onSuccess: (response: any) => {
-      console.log("🚀 ~ ValideTask ~ response:", response);
-      toast.success("Validation envoyée avec succès.", {
-        style: {
-          borderRadius: "10px",
-          background: "#8200FF",
-          color: "#fff",
-        },
+  const [file, setfile] = useState(undefined);
+  const [uploadPer, setUploadPer] = useState(0);
+  const [fileUploadError, setFileUploadError] = useState(false);
+  const [finalUrl, setFinalUrl] = useState("");
+  // const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileUpload = (file: File) => {
+    const storage = getStorage(app);
+    const fileName = new Date().getTime() + file.name;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setUploadPer(Math.round(progress));
+      },
+      (error) => {
+        setFileUploadError(true);
+        console.log("error from uploadTask.on: ", error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setFinalUrl(downloadURL);
+          console.log(downloadURL);
+          setfile(undefined);
+        });
+      }
+    );
+  };
+
+  useEffect(() => {
+    if (file) handleFileUpload(file);
+  }, [file]);
+
+  const sendComment = useSendCommentkMutation(id);
+
+  const handleSubmit = () => {
+    if (finalUrl && finalUrl !== "") {
+      console.log("sending comment url: ", finalUrl);
+      const formatedComment = `Le client a envoyé un fichier pour cette tâche :
+
+${finalUrl}
+      `;
+
+      sendComment.mutate({
+        comment_text: formatedComment,
       });
-    },
-    onError: (error: any) => {
-      console.log("🚀 ~ ValideTask ~ error:", error);
-      toast.error(
-        "Une erreur s'est produite lors de l'envoi de la vérification.",
-        {
-          style: {
-            borderRadius: "10px",
-            background: "#8200FF",
-            color: "#fff",
-          },
-        }
-      );
-    },
-  });
 
-  const [file, setFile] = useState(null);
-
-  const handleCommentSent = (event: any) => {
-    setFile(event.target.files[0]);
-  };
-  const sendFile = () => {
-    const formData = new FormData();
-
-    if (file) {
-      formData.append("attachment", file);
-    } else {
-      console.log("there no file");
+      closeModel();
     }
-    console.log("formData: ", formData);
-    // validTaskMutation.mutate(formData);
   };
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
@@ -64,9 +82,59 @@ const UploadFile = ({ id, closeModel }: { id: string; closeModel: any }) => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim consequat.
         </p>
-        <Input title="" type="file" onChange={handleCommentSent} />
-        <Button className="w-10/12 justify-center" onClick={() => sendFile()}>
-          {file ? "Envoyer" : "no"}
+        <div className="relative hover:opacity-70 sm:w-44 sm:h-44 bg-[#e1dada] rounded-full  transition duration-500">
+          <div className="w-24 h-24 sm:w-44 sm:h-44 aspect-square flex justify-center items-center">
+            <span className="block text-2xl cursor-pointer  sm:text-6xl text-paragraph  ">
+              <FaCloudUploadAlt
+                className="mx-auto"
+                onClick={() =>
+                  fileInputRef.current && fileInputRef.current.click()
+                }
+              />
+            </span>
+          </div>
+          <input
+            title="file"
+            className="hidden"
+            type="file"
+            accept="*"
+            ref={fileInputRef}
+            onChange={(e: any) => setfile(e.target.files[0])}
+          />
+
+          <span
+            className={
+              uploadPer > 0 && uploadPer < 100
+                ? "absolute top-[46%] left-[37%] font-bold animate-bounce text-2xl text-darkText"
+                : "hidden"
+            }
+          >
+            {uploadPer}%
+          </span>
+        </div>
+        <span>
+          {fileUploadError ? (
+            <p className="text-red-600">
+              La taille du fichier doit être inférieure à 40 mégaoctets.
+            </p>
+          ) : uploadPer === 100 ? (
+            <p className="text-primary">
+              Le fichier a été téléchargé avec succès.
+            </p>
+          ) : (
+            <p className="invisible">nothing</p>
+          )}
+        </span>
+        <Button
+          type="button"
+          onClick={handleSubmit}
+          className={`w-10/12 justify-center ${
+            !finalUrl && finalUrl === ""
+              ? "bg-disabled hover:bg-disabled active:bg-disabled cursor-default"
+              : ""
+          }`}
+        >
+          Envoyer
         </Button>
       </div>
     </div>

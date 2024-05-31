@@ -17,7 +17,7 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
     queryFn: () => axios.get(`/task/${id}`).then((response) => response.data),
     enabled: id ? true : false,
   });
-  console.log("MeetingData: ", MeetingData);
+  // console.log("MeetingData: ", MeetingData);
 
   const showModel = () => {
     const modal = document.getElementById(id) as HTMLDialogElement | null;

@@ -123,3 +123,13 @@ const ModifyTask = ({ id }: { id: string }) => {
 };
 
 export default ModifyTask;
+
+export const DisabledModifyTask = () => {
+  return (
+    <ActionButton className="bg-primary hover:bg-primary active:bg-primary cursor-default">
+      <span className="text-xl">
+        <MdOutlineEdit />
+      </span>
+    </ActionButton>
+  );
+};
