@@ -6,7 +6,15 @@ import { ActionButton } from "@/app/components/Button";
 import toast from "react-hot-toast";
 import axios from "@/lib/axios";
 
-const ValideTask = ({ id }: { id: string }) => {
+const ValideTask = ({
+  id,
+  timeline,
+  disabled,
+}: {
+  id: string;
+  timeline?: boolean;
+  disabled?: boolean;
+}) => {
   const showModel = () => {
     const modal = document.getElementById(
       `${id}Valide`
@@ -67,8 +75,14 @@ const ValideTask = ({ id }: { id: string }) => {
 
   return (
     <>
-      <ActionButton onClick={showModel}>
-        <span className="text-xl">
+      <ActionButton
+        disabled={disabled}
+        className={`${timeline ? "bg-white" : ""} ${
+          disabled ? "hover:bg-white active:bg-white cursor-default" : ""
+        }`}
+        onClick={showModel}
+      >
+        <span className={`text-xl ${timeline ? "text-primary" : ""}`}>
           <IoMdCheckmark />
         </span>
       </ActionButton>
@@ -78,10 +92,10 @@ const ValideTask = ({ id }: { id: string }) => {
             You sure?
           </h3>
 
-          <div className="text-sm text-center mt-3">
+          <p className="text-sm text-center mt-3 text-paragraph">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure nisi
             assumenda
-          </div>
+          </p>
           <div className="modal-action">
             <div className="w-full flex justify-center gap-6">
               <form method="dialog">

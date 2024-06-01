@@ -109,7 +109,7 @@ const PreviewBtn = ({
 };
 
 const TimeLine = ({ subtasks }: { subtasks: any }) => {
-  console.log("🚀 ~ TimeLine ~ subtasks:", subtasks);
+  // console.log("🚀 ~ TimeLine ~ subtasks:", subtasks);
 
   return (
     <ul className="timeline timeline-vertical mt-6">
@@ -136,21 +136,25 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
             <div
               className={`timeline-${i % 2 == 0 ? "start" : "end"} ${
                 done
-                  ? "bg-greenCheck border-greenCheck text-white"
+                  ? "bg-greenCheck border-greenCheck"
                   : now
-                  ? "bg-primary"
-                  : "bg-primary opacity-30"
-              } timeline-box op bg-transparent border-primary flex flex-col justify-center gap-1 min-w-[170px]`}
+                  ? "bg-primary border-primary"
+                  : "bg-primary opacity-30 border-primary"
+              } timeline-box text-white flex flex-col justify-center gap-1 min-w-[170px]`}
             >
               <span className="text-center">{item.name}</span>
-              <span className="text-center text-xs -mt-1 text-paragraph">
+              <span className="text-center text-xs -mt-1 text-gray-300">
                 {item?.due_date ? formatData(item?.due_date) : "--/--/----"}
               </span>
 
               <div className="flex gap-2 justify-center">
-                <PreviewLink done={done} url={""} />
-                {!done && <ValideTask id={item.id} />}
-                {!done && <ModifyTask id={item.id} />}
+                <PreviewLink done={done} url={""} disabled={!now} />
+                {!done && (
+                  <ValideTask disabled={!now} timeline={true} id={item.id} />
+                )}
+                {!done && (
+                  <ModifyTask disabled={!now} timeline={true} id={item.id} />
+                )}
               </div>
             </div>
             <div className={`timeline-middle`}>
@@ -287,14 +291,36 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
   );
 };
 
-const PreviewLink = ({ url, done }: { url: string; done: boolean }) => {
+const PreviewLink = ({
+  url,
+  done,
+  disabled,
+}: {
+  url: string;
+  done: boolean;
+  disabled?: boolean;
+}) => {
   return (
-    <ActionButton className={done ? "bg-white" : ""}>
-      <Link href={url}>
-        <span className={`text-xl ${done ? "text-greenCheck" : ""}`}>
+    <ActionButton
+      className={`bg-white ${
+        disabled ? "hover:bg-white active:bg-white cursor-default" : ""
+      }`}
+    >
+      {disabled ? (
+        <span
+          className={`text-xl ${done ? "text-greenCheck" : "text-primary"}`}
+        >
           <IoEyeOutline />
         </span>
-      </Link>
+      ) : (
+        <Link href={url}>
+          <span
+            className={`text-xl ${done ? "text-greenCheck" : "text-primary"}`}
+          >
+            <IoEyeOutline />
+          </span>
+        </Link>
+      )}
     </ActionButton>
   );
 };

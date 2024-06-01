@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CiMicrophoneOn } from "react-icons/ci";
 import { MdOutlineClose } from "react-icons/md";
 import { CiMicrophoneOff } from "react-icons/ci";
+import { formatData } from "@/lib/utils";
 
 const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
   const {
@@ -35,7 +36,15 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
         onClick={showModel}
         className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
       >
-        <span className="text-lg">{MeetingData?.name}</span>
+        <div className="flex flex-col">
+          <span className="text-lg">{MeetingData?.name}</span>
+
+          <span className="text-left text-xs -mt-1 text-paragraph">
+            {MeetingData?.due_date
+              ? formatData(MeetingData?.due_date)
+              : "--/--/----"}
+          </span>
+        </div>
         <span className="text-lg">
           {passed ? <CiMicrophoneOff /> : <CiMicrophoneOn />}
         </span>
@@ -58,7 +67,14 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
           </div>
           {passed && (
             <Button className="mt-6 mx-auto">
-              <Link href={""}>{`Voir l'enregistrement`}</Link>
+              <Link
+                href={
+                  MeetingData?.custom_fields?.find(
+                    (field: any) =>
+                      field.name === "Réunion / Lien d’enregistrement"
+                  ).value
+                }
+              >{`Voir l'enregistrement`}</Link>
             </Button>
           )}
 

@@ -12,7 +12,7 @@ const Description = ({ id }: any) => {
     queryFn: () => axios.get(`/task/${id}`).then((response) => response.data),
     enabled: id ? true : false,
   });
-  console.log("StrategieData: ", StrategieData);
+  // console.log("StrategieData: ", StrategieData);
 
   return <p className="text-paragraph">{StrategieData?.description}</p>;
 };

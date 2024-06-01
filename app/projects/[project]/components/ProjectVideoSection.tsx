@@ -21,7 +21,7 @@ const ProjectVideoSection = ({
     enabled: projectDetailsID ? true : false,
   });
 
-  console.log("from project video sec: ", projectDetailsData);
+  // console.log("from project video sec: ", projectDetailsData);
 
   return (
     <section className="py-14 px-5">

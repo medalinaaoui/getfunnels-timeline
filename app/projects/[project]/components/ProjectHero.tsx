@@ -14,10 +14,6 @@ const ProjectHero = ({
   const backgroundImageStyle = bgImage
     ? { backgroundImage: `url(${bgImage})` }
     : {};
-  console.log(
-    "🚀 from peojecthero~ backgroundImageStyle:",
-    backgroundImageStyle
-  );
 
   return (
     <section

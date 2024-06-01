@@ -19,7 +19,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
     enabled: projectDetailsID ? true : false,
   });
 
-  // console.log("from Meetings: ", projectDetailsData);
+  console.log("from Meetings: ", projectDetailsData);
 
   return (
     <section className="pb-14">
@@ -46,7 +46,10 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
               {projectDetailsData?.subtasks
                 ?.find((task: any) => task.name === "Réunions")
                 ?.subtasks?.map((sub: any) => {
-                  if (sub.status.status === "to do") {
+                  if (
+                    sub.status.status !== "achevée" ||
+                    sub.status.status !== "fermée"
+                  ) {
                     return <Meeting key={sub.id} id={sub.id} />;
                   }
                 })}
@@ -58,7 +61,10 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
               {projectDetailsData?.subtasks
                 ?.find((task: any) => task.name === "Réunions")
                 ?.subtasks?.map((sub: any) => {
-                  if (sub.status.status !== "to do") {
+                  if (
+                    sub.status.status === "achevée" ||
+                    sub.status.status === "fermée"
+                  ) {
                     return <Meeting passed={true} key={sub.id} id={sub.id} />;
                   }
                 })}

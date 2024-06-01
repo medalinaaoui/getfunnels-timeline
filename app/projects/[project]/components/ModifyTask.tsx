@@ -9,7 +9,15 @@ import MeetingRequest from "./sendComments/MeetingRequest";
 import InsertLink from "./sendComments/InsertLink";
 import UploadFile from "./sendComments/UploadFile";
 
-const ModifyTask = ({ id }: { id: string }) => {
+const ModifyTask = ({
+  id,
+  timeline,
+  disabled,
+}: {
+  id: string;
+  timeline?: boolean;
+  disabled?: boolean;
+}) => {
   const showModel = () => {
     const modal = document.getElementById(
       `${id}Modify`
@@ -38,8 +46,14 @@ const ModifyTask = ({ id }: { id: string }) => {
 
   return (
     <>
-      <ActionButton onClick={showModel}>
-        <span className="text-xl">
+      <ActionButton
+        disabled={disabled}
+        className={`${timeline ? "bg-white" : ""} ${
+          disabled ? "hover:bg-white active:bg-white cursor-default" : ""
+        }`}
+        onClick={showModel}
+      >
+        <span className={`text-xl ${timeline ? "text-primary" : ""}`}>
           <MdOutlineEdit />
         </span>
       </ActionButton>
