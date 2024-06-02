@@ -24,7 +24,7 @@ const ProjectDetails = ({
       <AdditionalInfoComponent
         responsable={AdditionalInfo.responsable}
         tools={AdditionalInfo.tools}
-        devisUrl={AdditionalInfo.devisUrl}
+        devisUrl={AdditionalInfo?.devisUrl}
       />
     </section>
   );

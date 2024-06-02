@@ -72,7 +72,7 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
                   MeetingData?.custom_fields?.find(
                     (field: any) =>
                       field.name === "Réunion / Lien d’enregistrement"
-                  ).value
+                  )?.value || ""
                 }
               >{`Voir l'enregistrement`}</Link>
             </Button>
