@@ -7,7 +7,7 @@ import { ClashDisplay } from "@/app/ui/fonts";
 const Footer = () => {
   return (
     <footer className={`bg-darkText text-lightText py-14 px-5`}>
-      <div className="flex justify-between w-full p-4 pb-8 border-b border-lightText">
+      <div className="flex max-md:flex-col max-md:gap-8 justify-between w-full p-4 pb-8 border-b border-lightText">
         <div>
           <div className="w-36 ">
             <Image
@@ -18,7 +18,7 @@ const Footer = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <ul className="flex items-center gap-4 mt-8">
+          <ul className="flex max-sm:flex-col max-sm:items-start items-center gap-4 mt-8">
             <li className="grid gap-2">
               <h6 className={`font-semibold ${ClashDisplay.className}`}>
                 Phone:

@@ -18,7 +18,7 @@ const ProjectDetails = ({
   const inspirations = urlsString ? getUrlsArray(urlsString) : [];
 
   return (
-    <section className="bg-darkText text-lightText pt-14 px-5 grid grid-cols-3 gap-3">
+    <section className="bg-darkText text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3">
       <Inspirations inspirations={inspirations} />
       <ProjectStructure tasks={tasks} />
       <AdditionalInfoComponent
@@ -33,8 +33,10 @@ export default ProjectDetails;
 
 const Inspirations = ({ inspirations }: { inspirations: string[] }) => {
   return (
-    <article className="">
-      <h3 className="text-xl mb-2">Inspirations</h3>
+    <article className="max-md:w-11/12 max-md:mx-auto">
+      <h3 className="text-2xl md:text-xl max-md:text-center mb-2 ">
+        Inspirations
+      </h3>
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
         {inspirations.map((inspiration, index) => (
           <ProjectSimpleButton
@@ -50,8 +52,10 @@ const Inspirations = ({ inspirations }: { inspirations: string[] }) => {
 
 const ProjectStructure = ({ tasks }: any) => {
   return (
-    <article className="">
-      <h3 className="text-xl mb-2">Structure du project</h3>
+    <article className="max-md:w-11/12 max-md:mx-auto">
+      <h3 className="text-2xl md:text-xl max-md:text-center mb-2">
+        Structure du project
+      </h3>
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
         {tasks.map((task: any) => (
           <ProjectSimpleCollapse
@@ -71,8 +75,10 @@ const AdditionalInfoComponent = ({
   devisUrl,
 }: AdditionalInfoI) => {
   return (
-    <article className="">
-      <h3 className="text-xl mb-2">Infos Supplémentaires</h3>
+    <article className="max-md:w-11/12 max-md:mx-auto">
+      <h3 className="text-2xl md:text-xl max-md:text-center mb-2">
+        Infos Supplémentaires
+      </h3>
       <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
         <ProjectIconCollapse
           icon={<FiUser />}

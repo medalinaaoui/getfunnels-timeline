@@ -12,7 +12,7 @@ const StructureSection = ({ tasks }: { tasks: any }) => {
     <section className="py-14 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-5xl font-semibold text-center text-darkText">
+        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
           Lorem Ipsum est un texte d&apos;espace réservé
         </h3>
 
@@ -23,7 +23,7 @@ const StructureSection = ({ tasks }: { tasks: any }) => {
         </p>
       </div>
 
-      <div className="pt-14 px-5 grid grid-cols-3 gap-3">
+      <div className="pt-14 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {tasks?.map((t: any) => (
           <StepInfo task={t} key={t.id} />
         ))}

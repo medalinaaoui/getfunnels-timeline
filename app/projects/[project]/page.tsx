@@ -10,6 +10,7 @@ import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import Loader from "@/app/components/Loader";
 import axios from "@/lib/axios";
+import LeftBar from "./components/LeftBar";
 
 const ProjectPage = ({ params }: any) => {
   const { data, isError, isLoading, error } = useQuery({
@@ -35,40 +36,43 @@ const ProjectPage = ({ params }: any) => {
     <Loader />
   ) : (
     <>
-      <ProjectHero
-        name={data?.data?.tasks[0]?.list?.name}
-        description={data?.data?.tasks[0]?.description}
-        bgImage={details["Projet / Lien de Background"]}
-      />
-      <ProjectDetails
-        tasks={data?.structure?.subtasks}
-        urlsString={details["Projet / Liens d'inspirations"]}
-        AdditionalInfo={{
-          responsable: details["Projet / Responsable du projet"] || "",
-          tools: details["Projet / Plateforme & Outils"] || "",
-          devisUrl: details["Offre / Lien de page"] || "",
-        }}
-      />
+      <LeftBar />
+      <div className="flex-1">
+        <ProjectHero
+          name={data?.data?.tasks[0]?.list?.name}
+          description={data?.data?.tasks[0]?.description}
+          bgImage={details["Projet / Lien de Background"] || ""}
+        />
+        <ProjectDetails
+          tasks={data?.structure?.subtasks}
+          urlsString={details["Projet / Liens d'inspirations"]}
+          AdditionalInfo={{
+            responsable: details["Projet / Responsable du projet"] || "",
+            tools: details["Projet / Plateforme & Outils"] || "",
+            devisUrl: details["Offre / Lien de page"] || "",
+          }}
+        />
 
-      <ProjectVideoSection
-        videoUrl={details["Stratégie / Lien de vidéo"] || ""}
-        projectDetailsID={
-          data?.data?.tasks?.find(
-            (tas: any) => tas?.name === "Détails de projet"
-          ).id
-        }
-      />
-      <Meetings
-        projectDetailsID={
-          data?.data?.tasks?.find(
-            (tas: any) => tas?.name === "Détails de projet"
-          ).id
-        }
-      />
-      <StructureSection tasks={data?.structure?.subtasks} />
-      <ShowOffSection />
-      <Testimonials />
-      <Footer />
+        <ProjectVideoSection
+          videoUrl={details["Stratégie / Lien de vidéo"] || ""}
+          projectDetailsID={
+            data?.data?.tasks?.find(
+              (tas: any) => tas?.name === "Détails de projet"
+            ).id
+          }
+        />
+        <Meetings
+          projectDetailsID={
+            data?.data?.tasks?.find(
+              (tas: any) => tas?.name === "Détails de projet"
+            ).id
+          }
+        />
+        <StructureSection tasks={data?.structure?.subtasks} />
+        <ShowOffSection />
+        <Testimonials />
+        <Footer />
+      </div>
     </>
   );
 };

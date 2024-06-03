@@ -29,8 +29,8 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
         <BluredShip className="bottom-0 left-0" />
       </div>
 
-      <div className="pt-8 grid grid-cols-2 gap-3 px-12 w-11/12 mx-auto">
-        <div className="w-3/4">
+      <div className="pt-8 grid  grid-cols-1 md:grid-cols-2 gap-3 px-5 md:px-12 w-11/12 mx-auto">
+        <div className="w-3/4 mx-auto">
           <Image
             src={MeetingImage}
             alt=""
@@ -41,7 +41,9 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
         </div>
         <div className="grid gap-3">
           <article className="text-darkText mt-4">
-            <h3 className="text-xl mb-2 font-semibold">Réunion planifiée</h3>
+            <h3 className="text-2xl md:text-xl max-md:text-center mb-2 font-semibold">
+              Réunion planifiée
+            </h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               {projectDetailsData?.subtasks
                 ?.find((task: any) => task.name === "Réunions")
@@ -56,7 +58,9 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
             </div>
           </article>
           <article className="text-darkText mt-4">
-            <h3 className="text-xl mb-2 font-semibold">Réunion passer</h3>
+            <h3 className="text-2xl md:text-xl max-md:text-center mb-2 font-semibold">
+              Réunion passer
+            </h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               {projectDetailsData?.subtasks
                 ?.find((task: any) => task.name === "Réunions")

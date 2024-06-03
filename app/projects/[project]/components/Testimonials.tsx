@@ -104,18 +104,36 @@ ${finalUrl}
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <section className="py-14 px-5">
+    <section className="py-6 md:py-14 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-5xl font-semibold text-center text-darkText">
+        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
           Lorem Ipsum est un texte d&apos;espace réservé
         </h3>
       </div>
 
       <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={30}
+          breakpoints={{
+            "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            "@1.50": {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          slidesPerView={1}
+          spaceBetween={10}
           centeredSlides={true}
           navigation={true}
           mousewheel={true}

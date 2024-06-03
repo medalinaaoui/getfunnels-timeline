@@ -27,7 +27,7 @@ const ProjectVideoSection = ({
     <section className="py-14 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-5xl font-semibold text-center text-darkText">
+        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
           Lorem Ipsum est un texte d&apos;espace réservé
         </h3>
 
@@ -38,7 +38,7 @@ const ProjectVideoSection = ({
         </p>
       </div>
 
-      <div className="grid grid-cols-2 w-5/6 gap-6 mx-auto mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4">
         <div className="grid gap-2 items-center">
           {!projectDetailsisLoading && (
             <Description
