@@ -36,7 +36,10 @@ const ProjectPage = ({ params }: any) => {
     <Loader />
   ) : (
     <>
-      <LeftBar />
+      <LeftBar
+        tasks={data?.structure?.subtasks}
+        name={data?.data?.tasks[0]?.list?.name}
+      />
       <div className="flex-1">
         <ProjectHero
           name={data?.data?.tasks[0]?.list?.name}

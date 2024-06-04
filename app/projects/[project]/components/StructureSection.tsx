@@ -7,6 +7,9 @@ import { formatData, isDone, isNow } from "@/lib/utils";
 import { DisabledModifyTask } from "./ModifyTask";
 import Link from "next/link";
 import { Donegal_One } from "next/font/google";
+import { useQuery } from "@tanstack/react-query";
+import axios from "@/lib/axios";
+
 const StructureSection = ({ tasks }: { tasks: any }) => {
   return (
     <section className="py-14 px-5">
@@ -34,6 +37,8 @@ const StructureSection = ({ tasks }: { tasks: any }) => {
 export default StructureSection;
 
 const StepInfo = ({ task }: { task: any }) => {
+  console.log("Steps Step: ", task);
+
   return (
     <article className="step-info-card h-full text-darkText p-4 flex flex-col min-h-[340px] gap-2">
       <h3 className="text-center font-bold text-xl">{task?.name}</h3>
@@ -50,8 +55,17 @@ const StepInfo = ({ task }: { task: any }) => {
                 task={subtask.name}
                 subtasks={subtask.subtasks}
               />
-              <ValideTask id={subtask.id} />
-              <ModifyTask id={subtask.id} />
+              {subtask?.status?.status === "achevée" ||
+              subtask?.status?.status === "fermée" ? (
+                <div className="opacity-30 pointer-events-none">
+                  <ValideTask disabled={true} id={subtask.id} />
+                </div>
+              ) : (
+                <ValideTask id={subtask.id} />
+              )}
+              <div className="pointer-events-none">
+                <ModifyTask id={subtask.id} />
+              </div>
             </div>
           </li>
         ))}
@@ -109,7 +123,7 @@ const PreviewBtn = ({
 };
 
 const TimeLine = ({ subtasks }: { subtasks: any }) => {
-  // console.log("🚀 ~ TimeLine ~ subtasks:", subtasks);
+  console.log("🚀 ~ TimeLine ~ subtasks:", subtasks);
 
   return (
     <ul className="timeline timeline-vertical mt-6">
@@ -148,7 +162,16 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
               </span>
 
               <div className="flex gap-2 justify-center">
-                <PreviewLink done={done} url={""} disabled={!now} />
+                <PreviewLink
+                  done={done}
+                  // url={
+                  //   item?.custom_fields?.find(
+                  //     (f: any) => f?.name === "Sous tâche / Preview Link"
+                  //   ) || ""
+                  // }
+                  id={item?.id}
+                  disabled={!now}
+                />
                 {!done && (
                   <ValideTask disabled={!now} timeline={true} id={item.id} />
                 )}
@@ -292,14 +315,22 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
 };
 
 const PreviewLink = ({
-  url,
+  id,
   done,
   disabled,
 }: {
-  url: string;
+  id: string;
   done: boolean;
   disabled?: boolean;
 }) => {
+  const { data, isError, isLoading, error } = useQuery({
+    queryKey: [id, "sub sub task"],
+    queryFn: () => axios.get(`/task/${id}`).then((response) => response.data),
+    enabled: id ? true : false,
+  });
+
+  // console.log("data for sub sub task: ", data);
+
   return (
     <ActionButton
       className={`bg-white ${
@@ -313,7 +344,13 @@ const PreviewLink = ({
           <IoEyeOutline />
         </span>
       ) : (
-        <Link href={url}>
+        <Link
+          href={
+            data?.custom_fields?.find(
+              (f: any) => f.name === "Sous tâche / Preview Link"
+            ).value || "#"
+          }
+        >
           <span
             className={`text-xl ${done ? "text-greenCheck" : "text-primary"}`}
           >

@@ -4,7 +4,7 @@ import axios from "@/lib/axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 
-const LeftBar = ({ params }: any) => {
+const LeftBar = ({ name, tasks }: { name: string; tasks: any }) => {
   const [timeline, setTimeline] = useState(true);
 
   const hiddeTimeline = () => {
@@ -22,8 +22,8 @@ const LeftBar = ({ params }: any) => {
           timeline ? "" : "-translate-x-full"
         }`}
       >
-        <ProjectBar name={"params.project"} />
-        <DashedBar />
+        <ProjectBar name={name} />
+        <DashedBar tasks={tasks} />
         <button
           onClick={hiddeTimeline}
           title="hidde the timeline"
@@ -49,7 +49,7 @@ const ProjectBar = ({ name }: { name: string }) => {
       <div className="flex items-center absolute top-32  left-[-10px]">
         <div className="w-5 h-5 aspect-square bg-lightText rounded-full"></div>
         <div className="relative">
-          <span className="absolute right-[5px] top-14 left-2 rotate-[270deg] text-sm">
+          <span className="absolute right-[5px] top-[5vh] left-2 rotate-[270deg] text-sm whitespace-nowrap">
             {name}
           </span>
         </div>
@@ -58,33 +58,23 @@ const ProjectBar = ({ name }: { name: string }) => {
   );
 };
 
-const DashedBar = () => {
+const DashedBar = ({ tasks }: { tasks: any }) => {
+  const testArr = () => {
+    const index = 0;
+  };
+
   return (
     <div className="dashed-bar border-l-[3px] border-dashed h-[90%] flex flex-col justify-center gap-8">
-      <div className="">
-        <h5 className="-translate-x-8 bg-primary">Project</h5>
-        <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-        </ul>
-      </div>
-      <div className="">
-        <h5 className="-translate-x-8 bg-primary">Project</h5>
-        <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-        </ul>
-      </div>
-      <div className="">
-        <h5 className="-translate-x-8 bg-primary">Project</h5>
-        <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-          <li>Lorem ipsum</li>
-        </ul>
-      </div>
+      {tasks?.map((t: any) => (
+        <div key={t.id} className="">
+          <h5 className="-translate-x-8 bg-primary">{t?.name}</h5>
+          <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">
+            {t?.subtasks?.map((subt: any) => (
+              <li key={subt?.id}>{subt?.name}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
