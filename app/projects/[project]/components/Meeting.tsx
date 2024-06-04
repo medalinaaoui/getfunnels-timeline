@@ -18,10 +18,12 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
     queryFn: () => axios.get(`/task/${id}`).then((response) => response.data),
     enabled: id ? true : false,
   });
-  // console.log("MeetingData: ", MeetingData);
+  console.log("MeetingData: ", MeetingData);
 
   const showModel = () => {
-    const modal = document.getElementById(id) as HTMLDialogElement | null;
+    const modal = document.getElementById(
+      `${id}_meeting`
+    ) as HTMLDialogElement | null;
 
     if (modal) {
       modal.showModal();
@@ -49,7 +51,7 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
           {passed ? <CiMicrophoneOff /> : <CiMicrophoneOn />}
         </span>
       </button>
-      <dialog id={id} className="modal">
+      <dialog id={`${id}_meeting`} className="modal">
         <div className="modal-box model-popup ">
           <h3 className="font-bold text-lg text-center text-primary">
             {passed ? "Récapitulatif de la réunion" : "Objectif de réunion"}

@@ -24,7 +24,7 @@ const ProjectVideoSection = ({
   // console.log("from project video sec: ", projectDetailsData);
 
   return (
-    <section className="py-14 px-5">
+    <section id="strategy" className="py-14 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
         <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">

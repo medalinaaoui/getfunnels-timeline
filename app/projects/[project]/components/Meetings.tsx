@@ -22,7 +22,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
   console.log("from Meetings: ", projectDetailsData);
 
   return (
-    <section className="pb-14">
+    <section id="meetings" className="pb-2 sm:pb-14">
       <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative">
         <h2>Réunion</h2>
         <BluredShip className="top-0 right-0" />
@@ -49,7 +49,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
                 ?.find((task: any) => task.name === "Réunions")
                 ?.subtasks?.map((sub: any) => {
                   if (
-                    sub.status.status !== "achevée" ||
+                    sub.status.status !== "achevée" &&
                     sub.status.status !== "fermée"
                   ) {
                     return <Meeting key={sub.id} id={sub.id} />;

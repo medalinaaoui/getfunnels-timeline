@@ -33,7 +33,9 @@ const ProjectPage = ({ params }: any) => {
   // console.log("🚀 ~ ProjectPage ~ details:", details);
 
   return isLoading ? (
-    <Loader />
+    <div className="flex-1">
+      <Loader />
+    </div>
   ) : (
     <>
       <LeftBar

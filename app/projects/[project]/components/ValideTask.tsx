@@ -78,7 +78,9 @@ const ValideTask = ({
       <ActionButton
         disabled={disabled}
         className={`${timeline ? "bg-white" : ""} ${
-          disabled ? "hover:bg-white active:bg-white cursor-default" : ""
+          disabled
+            ? "hover:bg-white active:bg-white cursor-default pointer-events-none"
+            : ""
         }`}
         onClick={showModel}
       >

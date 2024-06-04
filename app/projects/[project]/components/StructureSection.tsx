@@ -12,7 +12,7 @@ import axios from "@/lib/axios";
 
 const StructureSection = ({ tasks }: { tasks: any }) => {
   return (
-    <section className="py-14 px-5">
+    <section id="structure" className="py-14 max-sm:pt-4 px-5">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
         <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
@@ -26,7 +26,7 @@ const StructureSection = ({ tasks }: { tasks: any }) => {
         </p>
       </div>
 
-      <div className="pt-14 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="pt-6 sm:pt-14 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {tasks?.map((t: any) => (
           <StepInfo task={t} key={t.id} />
         ))}
@@ -40,32 +40,41 @@ const StepInfo = ({ task }: { task: any }) => {
   console.log("Steps Step: ", task);
 
   return (
-    <article className="step-info-card h-full text-darkText p-4 flex flex-col min-h-[340px] gap-2">
+    <article
+      id={task?.id}
+      className="step-info-card h-full text-darkText p-4 flex flex-col min-h-[340px] gap-2"
+    >
       <h3 className="text-center font-bold text-xl">{task?.name}</h3>
       <ul className="flex flex-col gap-2 mt-2">
         {task?.subtasks.map((subtask: any) => (
           <li
+            id={subtask?.id}
             key={subtask.id}
-            className="flex items-center px-2 justify-between border-b-2 pb-2 mt-2"
+            className="flex items-center px-2 justify-between border-b-2 py-2 mt-2"
           >
             <span className="font-semibold">{subtask.name}</span>
             <div className="flex gap-2">
               <PreviewBtn
-                id={subtask.id}
+                id={subtask?.id}
                 task={subtask.name}
                 subtasks={subtask.subtasks}
               />
               {subtask?.status?.status === "achevée" ||
               subtask?.status?.status === "fermée" ? (
-                <div className="opacity-30 pointer-events-none">
-                  <ValideTask disabled={true} id={subtask.id} />
-                </div>
+                <>
+                  <div className="opacity-30 pointer-events-none">
+                    <ValideTask id={subtask.id} />
+                  </div>
+                  <div className="opacity-30 pointer-events-none">
+                    <ModifyTask id={subtask.id} />
+                  </div>
+                </>
               ) : (
-                <ValideTask id={subtask.id} />
+                <>
+                  <ValideTask id={subtask.id} />
+                  <ModifyTask id={subtask.id} />
+                </>
               )}
-              <div className="pointer-events-none">
-                <ModifyTask id={subtask.id} />
-              </div>
             </div>
           </li>
         ))}
@@ -84,7 +93,9 @@ const PreviewBtn = ({
   subtasks: any;
 }) => {
   const showModel = () => {
-    const modal = document.getElementById(id) as HTMLDialogElement | null;
+    const modal = document.getElementById(
+      `${id}_parent_subtask`
+    ) as HTMLDialogElement | null;
 
     if (modal) {
       modal.showModal();
@@ -100,7 +111,7 @@ const PreviewBtn = ({
           <IoEyeOutline />
         </span>
       </ActionButton>
-      <dialog id={id} className="modal">
+      <dialog id={`${id}_parent_subtask`} className="modal">
         <div className="modal-box model-popup">
           <h3 className="font-bold text-lg text-center text-primary">{task}</h3>
 
@@ -334,7 +345,9 @@ const PreviewLink = ({
   return (
     <ActionButton
       className={`bg-white ${
-        disabled ? "hover:bg-white active:bg-white cursor-default" : ""
+        disabled
+          ? "hover:bg-white active:bg-white cursor-default pointer-events-none"
+          : ""
       }`}
     >
       {disabled ? (

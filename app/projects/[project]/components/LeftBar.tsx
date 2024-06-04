@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 
 const LeftBar = ({ name, tasks }: { name: string; tasks: any }) => {
-  const [timeline, setTimeline] = useState(true);
+  const [timeline, setTimeline] = useState(window.innerWidth > 1024);
 
   const hiddeTimeline = () => {
     setTimeline(!timeline);
@@ -63,14 +63,37 @@ const DashedBar = ({ tasks }: { tasks: any }) => {
     const index = 0;
   };
 
+  const handleClick = (ele: string) => {
+    // e.preventDefault();
+    const element = document.getElementById(ele);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      element.classList.add("glow-scroll");
+      setTimeout(() => {
+        element.classList.remove("glow-scroll");
+      }, 1000); // Duration should match the CSS animation duration
+    }
+  };
+
   return (
     <div className="dashed-bar border-l-[3px] border-dashed h-[90%] flex flex-col justify-center gap-8">
       {tasks?.map((t: any) => (
         <div key={t.id} className="">
-          <h5 className="-translate-x-8 bg-primary">{t?.name}</h5>
+          <h5
+            onClick={() => handleClick(t.id)}
+            className="-translate-x-8 bg-primary hover:opacity-70 transition-all duration-300 cursor-pointer"
+          >
+            {t?.name}
+          </h5>
           <ul className="ml-2 text-sm flex flex-col gap-3 mt-3">
             {t?.subtasks?.map((subt: any) => (
-              <li key={subt?.id}>{subt?.name}</li>
+              <li
+                className="hover:opacity-70 transition-all duration-300 cursor-pointer"
+                key={subt?.id}
+                onClick={() => handleClick(subt.id)}
+              >
+                {subt?.name}
+              </li>
             ))}
           </ul>
         </div>
