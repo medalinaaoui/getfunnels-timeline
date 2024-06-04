@@ -23,13 +23,12 @@ const ProjectPage = ({ params }: any) => {
 
   console.log("project: ", data);
 
-  const details = data?.data?.tasks[0]?.custom_fields.reduce(
-    (acc: any, field: any) => {
+  const details = data?.data?.tasks
+    ?.find((task: any) => task.name === "Détails de projet")
+    ?.custom_fields.reduce((acc: any, field: any) => {
       acc[field.name] = field.value !== undefined ? field.value : null;
       return acc;
-    },
-    {} as { [key: string]: any }
-  );
+    }, {} as { [key: string]: any });
   // console.log("🚀 ~ ProjectPage ~ details:", details);
 
   return isLoading ? (
@@ -40,12 +39,24 @@ const ProjectPage = ({ params }: any) => {
     <>
       <LeftBar
         tasks={data?.structure?.subtasks}
-        name={data?.data?.tasks[0]?.list?.name}
+        name={
+          data?.data?.tasks?.find(
+            (task: any) => task.name === "Détails de projet"
+          )?.list?.name
+        }
       />
       <div className="flex-1">
         <ProjectHero
-          name={data?.data?.tasks[0]?.list?.name}
-          description={data?.data?.tasks[0]?.description}
+          name={
+            data?.data?.tasks?.find(
+              (task: any) => task.name === "Détails de projet"
+            )?.list?.name
+          }
+          description={
+            data?.data?.tasks?.find(
+              (task: any) => task.name === "Détails de projet"
+            )?.description
+          }
           bgImage={details["Projet / Lien de Background"] || ""}
         />
         <ProjectDetails

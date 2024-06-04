@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="h-screen w-screen flex justify-center items-center z-[60]">
       <span className="main-loader"></span>
     </div>
   );
