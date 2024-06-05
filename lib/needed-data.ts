@@ -38,7 +38,7 @@ export const testimonials = [
   },
 ];
 
-const quotes = [
+export const quotes = [
   `"Success in business requires training, discipline, and hard work. But if you're not frightened by these things, the opportunities are just as great today as they ever were." - David Rockefeller`,
   `"The secret of business is to know something that nobody else knows." - Aristotle Onassis`,
   `"Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful." - Albert Schweitzer`,
@@ -59,9 +59,3 @@ const quotes = [
   `"Success is walking from failure to failure with no loss of enthusiasm." - Winston Churchill`,
   `"The function of leadership is to produce more leaders, not more followers." - Ralph Nader`,
 ];
-const getRandomQuote = () => {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[randomIndex];
-};
-
-export const quote = getRandomQuote();

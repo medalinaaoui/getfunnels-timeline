@@ -21,8 +21,15 @@
 // export default Loader;
 
 import Image from "next/image";
-import { quote } from "@/lib/needed-data";
+import { quotes } from "@/lib/needed-data";
 const Loader = () => {
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  };
+
+  const quote = getRandomQuote();
+
   return (
     <div className="h-screen w-screen flex justify-center items-center z-[60] bg-primary">
       <div className="flex relative flex-col items-center gap-8 w-11/12 md:w-1/2  2xl:mx-auto 2xl:max-w-7xl">

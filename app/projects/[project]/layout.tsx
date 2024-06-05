@@ -9,7 +9,7 @@ export default function SingleMovieLayout({
     <main>
       <div className="h-screen flex">
         <MainMenu />
-        <div className="flex">{children}</div>
+        <div className="flex w-full">{children}</div>
       </div>
     </main>
   );
