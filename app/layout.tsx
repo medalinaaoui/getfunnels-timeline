@@ -8,8 +8,6 @@ const title = "GetFunnels - Timeline";
 const description = "getfunnels timeline";
 const keywords = ["getfunnels", "digitalspeak"];
 export const metadata: Metadata = {
-  metadataBase: new URL(""),
-  // icons: ["./getfunnels-icon.png", "./getfunnels-icon.png"],
   title,
   description,
   authors: [
@@ -23,24 +21,13 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    images: [
-      {
-        url: "./getfunnels-icon.png",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@these7enthart",
+    site: "@getfunnels",
     title,
     description,
-    images: [
-      {
-        url: "./getfunnels-icon.png",
-      },
-    ],
   },
-  robots: "index, follow",
 };
 
 export default function RootLayout({
