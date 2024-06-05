@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import Loader from "./components/Loader";
 
 const Page = () => {
   return (

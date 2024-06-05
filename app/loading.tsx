@@ -1,8 +1,6 @@
+import Loader from "./components/Loader";
+
 const Loading = () => {
-  return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <span className="main-loader"></span>
-    </div>
-  );
+  return <Loader />;
 };
 export default Loading;

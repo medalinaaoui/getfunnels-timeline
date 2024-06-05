@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "digitalspeak.group",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "getfunnels.space",
+        pathname: "**",
+      },
     ],
   },
 };
