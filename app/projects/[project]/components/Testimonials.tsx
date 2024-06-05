@@ -1,4 +1,6 @@
 "use client";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 import React, { useEffect, useRef, useState } from "react";
 import { IoMdPlay } from "react-icons/io";
 import { testimonials } from "@/lib/needed-data";
@@ -12,6 +14,7 @@ import testi1 from "@/public/testi1.png";
 import { ActionButton, Button } from "@/app/components/Button";
 import Link from "next/link";
 import { MdOutlineClose } from "react-icons/md";
+import SendTesti from "./sendComments/SendTestimo";
 
 import useSendCommentkMutation from "@/lib/sendComment";
 import {
@@ -35,6 +38,145 @@ const Testimonials = () => {
       console.error("modal not found add_testimonials_modal");
     }
   };
+
+  const hideModel = () => {
+    const modal = document.getElementById(
+      `add_testimonials_modal`
+    ) as HTMLDialogElement | null;
+    if (modal) {
+      modal.close();
+    } else {
+      console.error("Modal not found.", `add_testimonials_modal`);
+    }
+  };
+
+  const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
+  const handleOpenModal = (content: JSX.Element | null) => {
+    setModalContent(content);
+  };
+
+  return (
+    <section className="py-6 md:py-14 px-5">
+      <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
+        <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
+        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
+          Lorem Ipsum est un texte d&apos;espace réservé
+        </h3>
+      </div>
+
+      <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
+        <Swiper
+          breakpoints={{
+            "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            "@1.50": {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          slidesPerView={1}
+          spaceBetween={10}
+          centeredSlides={true}
+          navigation={true}
+          mousewheel={true}
+          //   keyboard={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination, Keyboard, Mousewheel, Navigation]}
+          className="mySwiper"
+        >
+          {testimonials?.map((testi) => (
+            <SwiperSlide key={testi.id}>
+              <Testimonial
+                id={testi.id}
+                name={testi.name}
+                image={testi.image}
+                video={testi.video}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <Button onClick={showModel}>J’ajoute un témoignage</Button>
+        <dialog id={`add_testimonials_modal`} className="modal">
+          <div className="modal-box model-popup min-h-[350px] flex justify-center items-center">
+            {modalContent ? (
+              modalContent
+            ) : (
+              <div>
+                <h3 className="font-bold text-lg text-center pb-2 text-primary">
+                  Lorem Ipsum est un texte out
+                </h3>
+                <p className="text-xs text-center text-paragraph pb-2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim consequat.
+                </p>
+                <div className="flex flex-col gap-2 items-center mt-1">
+                  <Button
+                    className="w-10/12 justify-center"
+                    onClick={() => handleOpenModal(<UploadTestimonial />)}
+                  >
+                    Upload Video
+                  </Button>
+                  <Button
+                    className="w-10/12 justify-center"
+                    onClick={() =>
+                      handleOpenModal(
+                        <SendTesti
+                          id={"8694jpa6r"}
+                          closeModel={() => hideModel()}
+                        />
+                      )
+                    }
+                  >
+                    Write a testimonial
+                  </Button>
+                </div>
+              </div>
+            )}
+            <div className="modal-action">
+              <div className="w-full">
+                <form method="dialog">
+                  <ActionButton className="absolute top-2 right-2">
+                    <span className="text-xl">
+                      <MdOutlineClose />
+                    </span>
+                  </ActionButton>
+                </form>
+                <ActionButton
+                  onClick={() => handleOpenModal(null)}
+                  className="absolute top-2 left-2 bg-transparent border border-black"
+                >
+                  <span className="text-2xl text-darkText">
+                    <IoIosArrowRoundBack />
+                  </span>
+                </ActionButton>
+              </div>
+            </div>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  );
+};
+export default Testimonials;
+
+const UploadTestimonial = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const hideModel = () => {
     const modal = document.getElementById(
@@ -101,148 +243,75 @@ ${finalUrl}
     }
   };
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   return (
-    <section className="py-6 md:py-14 px-5">
-      <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
-        <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-          Lorem Ipsum est un texte d&apos;espace réservé
-        </h3>
-      </div>
-
-      <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
-        <Swiper
-          breakpoints={{
-            "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            "@1.50": {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          slidesPerView={1}
-          spaceBetween={10}
-          centeredSlides={true}
-          navigation={true}
-          mousewheel={true}
-          //   keyboard={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination, Keyboard, Mousewheel, Navigation]}
-          className="mySwiper"
-        >
-          {testimonials?.map((testi) => (
-            <SwiperSlide key={testi.id}>
-              <Testimonial
-                id={testi.id}
-                name={testi.name}
-                image={testi.image}
-                video={testi.video}
+    <div>
+      <h3 className="font-bold text-lg text-center text-primary">
+        Lorem Ipsum est un texte meeting
+      </h3>
+      <div className="flex flex-col items-center gap-4 mt-1">
+        <p className="text-xs text-center text-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim consequat.
+        </p>
+        <div className="relative hover:opacity-70 sm:w-44 sm:h-44 bg-[#e1dada] rounded-full  transition duration-500">
+          <div className="w-24 h-24 sm:w-44 sm:h-44 aspect-square flex justify-center items-center">
+            <span className="block text-2xl cursor-pointer  sm:text-6xl text-paragraph  ">
+              <FaCloudUploadAlt
+                className="mx-auto"
+                onClick={() =>
+                  fileInputRef.current && fileInputRef.current.click()
+                }
               />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      <div className="mt-8 flex justify-center">
-        <Button onClick={showModel}>J’ajoute un témoignage</Button>
-        <dialog id={`add_testimonials_modal`} className="modal">
-          <div className="modal-box model-popup">
-            <div>
-              <h3 className="font-bold text-lg text-center text-primary">
-                Lorem Ipsum est un texte meeting
-              </h3>
-              <div className="flex flex-col items-center gap-4 mt-1">
-                <p className="text-xs text-center text-paragraph">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim consequat.
-                </p>
-                <div className="relative hover:opacity-70 sm:w-44 sm:h-44 bg-[#e1dada] rounded-full  transition duration-500">
-                  <div className="w-24 h-24 sm:w-44 sm:h-44 aspect-square flex justify-center items-center">
-                    <span className="block text-2xl cursor-pointer  sm:text-6xl text-paragraph  ">
-                      <FaCloudUploadAlt
-                        className="mx-auto"
-                        onClick={() =>
-                          fileInputRef.current && fileInputRef.current.click()
-                        }
-                      />
-                    </span>
-                  </div>
-                  <input
-                    title="file"
-                    className="hidden"
-                    type="file"
-                    accept="*"
-                    ref={fileInputRef}
-                    onChange={(e: any) => setfile(e.target.files[0])}
-                  />
-
-                  <span
-                    className={
-                      uploadPer > 0 && uploadPer < 100
-                        ? "absolute top-[46%] left-[37%] font-bold animate-bounce text-2xl text-darkText"
-                        : "hidden"
-                    }
-                  >
-                    {uploadPer}%
-                  </span>
-                </div>
-                <span>
-                  {fileUploadError ? (
-                    <p className="text-red-600">
-                      La taille du fichier doit être inférieure à 40 mégaoctets.
-                    </p>
-                  ) : uploadPer === 100 ? (
-                    <p className="text-primary">
-                      Le fichier a été téléchargé avec succès.
-                    </p>
-                  ) : (
-                    <p className="invisible">nothing</p>
-                  )}
-                </span>
-                <Button
-                  type="button"
-                  onClick={handleSubmit}
-                  className={`w-10/12 justify-center ${
-                    !finalUrl && finalUrl === ""
-                      ? "bg-disabled hover:bg-disabled active:bg-disabled cursor-default"
-                      : ""
-                  }`}
-                >
-                  Envoyer
-                </Button>
-                <div className="modal-action">
-                  <form method="dialog">
-                    <ActionButton className="absolute top-2 right-2">
-                      <span className="text-xl">
-                        <MdOutlineClose />
-                      </span>
-                    </ActionButton>
-                  </form>
-                </div>
-              </div>
-            </div>
+            </span>
           </div>
-        </dialog>
+          <input
+            title="file"
+            className="hidden"
+            type="file"
+            accept="*"
+            ref={fileInputRef}
+            onChange={(e: any) => setfile(e.target.files[0])}
+          />
+
+          <span
+            className={
+              uploadPer > 0 && uploadPer < 100
+                ? "absolute top-[46%] left-[37%] font-bold animate-bounce text-2xl text-darkText"
+                : "hidden"
+            }
+          >
+            {uploadPer}%
+          </span>
+        </div>
+        <span>
+          {fileUploadError ? (
+            <p className="text-red-600">
+              La taille du fichier doit être inférieure à 40 mégaoctets.
+            </p>
+          ) : uploadPer === 100 ? (
+            <p className="text-primary">
+              Le fichier a été téléchargé avec succès.
+            </p>
+          ) : (
+            <p className="invisible">nothing</p>
+          )}
+        </span>
+        <Button
+          type="button"
+          onClick={handleSubmit}
+          className={`w-10/12 justify-center ${
+            !finalUrl && finalUrl === ""
+              ? "bg-disabled hover:bg-disabled active:bg-disabled cursor-default"
+              : ""
+          }`}
+        >
+          Envoyer
+        </Button>
       </div>
-    </section>
+    </div>
   );
 };
-export default Testimonials;
 
 const Testimonial = ({
   id,
