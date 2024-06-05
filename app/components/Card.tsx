@@ -15,7 +15,7 @@ const Card = () => {
     router.push(`/clients/${searchTerm}`);
   };
   return (
-    <div className="tracking-card p-5 w-1/3 min-h-[200px] flex justify-center flex-col items-center gap-3">
+    <div className="tracking-card bg-paragraph p-5 w-11/12 md:w-1/2 lg:w-1/3 min-h-[200px] flex justify-center flex-col items-center gap-3">
       <h3>Track Your Projects</h3>
 
       <Input

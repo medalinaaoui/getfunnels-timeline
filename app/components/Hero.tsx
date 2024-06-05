@@ -5,9 +5,9 @@ import Card from "./Card";
 
 const Hero = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-around">
+    <div className="h-screen bg-primary max-sm:px-8 flex flex-col overflow-hidden items-center justify-between pb-8 md:pb-14 z-10 welcome-hero">
       {/* <canvas className="min-h-screen w-1/2 anahowa absolute left-0 right-0 mx-auto -z-1 "></canvas> */}
-      <div className="min-h-screen w-1/2 absolute left-0 right-0 mx-auto -z-1">
+      <div className="min-h-screen w-1/2 absolute left-0 right-0 mx-auto -z-20">
         <Image
           src={Light}
           alt=""
@@ -22,23 +22,25 @@ const Hero = () => {
           alt=""
           width={1000}
           height={1000}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </div>
 
-      <h1 className="flex text-center w-2/3">
-        Lorem ipsum dolor sit amet consectetur. Euismod sed sed id in
-      </h1>
-      <div className="flex w-1/2">
-        <span className="text-center">
-          Lorem ipsum dolor sit amet consectetur. Euismod sed sed id inLorem r
-          smod sed sed id inipsum dolor sit amet consectetu
-        </span>
+      <div className="flex flex-col items-center gap-4">
+        <h1 className="flex text-center sm:w-2/3">
+          Lorem ipsum dolor sit amet consectetur
+        </h1>
+        <div className="flex sm:w-1/2">
+          <p className="text-center">
+            Lorem ipsum dolor sit amet consectetur. Euismod sed sed id inLorem r
+            smod sed sed id inipsum dolor sit amet consectetu
+          </p>
+        </div>
+
+        <Card />
       </div>
 
-      <Card />
-
-      <span className="text-sm">
+      <span className="text-xs text-center sm:text-sm poppins">
         For Any Inquiries Please Contact - digitalspeak@contact.com
       </span>
     </div>

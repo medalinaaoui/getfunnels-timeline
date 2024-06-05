@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Project1 from "@/public/project-page-1.png";
+import Project2 from "@/public/project-page-2.png";
+import Project3 from "@/public/project-page-3.png";
 import { ActionButton } from "@/app/components/Button";
 import { IoEyeOutline } from "react-icons/io5";
 
@@ -33,7 +35,7 @@ const ShowOffSection = () => {
         </div>
         <div className="w-full relative">
           <Image
-            src={Project1}
+            src={Project2}
             alt=""
             width={1000}
             height={1000}
@@ -49,7 +51,7 @@ const ShowOffSection = () => {
         </div>
         <div className="w-full relative">
           <Image
-            src={Project1}
+            src={Project3}
             alt=""
             width={1000}
             height={1000}

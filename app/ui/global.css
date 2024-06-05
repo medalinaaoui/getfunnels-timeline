@@ -20,11 +20,11 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-/* body {
+.welcome-hero {
   background-image: url("/grid.png");
   background-size: cover;
   background-position: center;
-} */
+}
 
 /* .anahowa {
   background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 91.86%);
@@ -45,6 +45,19 @@ h1 {
   text-transform: uppercase;
 }
 
+@media (max-width: 769px) {
+  h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
 /* span {
   opacity: 0.4;
   background: linear-gradient(
@@ -60,7 +73,7 @@ h1 {
 .tracking-card {
   border-radius: 12px;
   border: 0.5px solid rgba(255, 255, 255, 0);
-  background: rgba(217, 217, 217, 0.03);
+  background: rgba(217, 217, 217, 0.301);
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(90px);
 }
@@ -194,7 +207,8 @@ footer * {
   z-index: -1;
 }
 .project-details-card li,
-ul.ul-nav-bar li a {
+ul.ul-nav-bar li a,
+.poppins {
   font-family: "__Poppins_45ea9b", "__Poppins_Fallback_45ea9b";
 }
 
