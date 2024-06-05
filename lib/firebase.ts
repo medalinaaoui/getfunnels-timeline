@@ -7,25 +7,25 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-// const firebaseConfig = {
-//   apiKey: process.env.NEXT_PUBLIC_apiKey,
-//   authDomain: process.env.NEXT_PUBLIC_authDomain,
-//   projectId: process.env.NEXT_PUBLIC_projectId,
-//   storageBucket: process.env.NEXT_PUBLIC_storageBucket,
-//   messagingSenderId: process.env.NEXT_PUBLIC_messagingSenderId,
-//   appId: process.env.NEXT_PUBLIC_appId,
-//   measurementId: process.env.NEXT_PUBLIC_measurementId,
-// };
-
 const firebaseConfig = {
-  apiKey: "AIzaSyC1S25u2r_x7v8PvR8m0Fcq1LR7wBa2PSc",
-  authDomain: "getfunnels-ds.firebaseapp.com",
-  projectId: "getfunnels-ds",
-  storageBucket: "getfunnels-ds.appspot.com",
-  messagingSenderId: "340131938008",
-  appId: "1:340131938008:web:ae7531df88fc7e52faa1ad",
-  measurementId: "G-EHXBV0JG6Q",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
+
+// const firebaseConfig = {
+//   apiKey: "",
+//   authDomain: "",
+//   projectId: "",
+//   storageBucket: "",
+//   messagingSenderId: "",
+//   appId: "",
+//   measurementId: "",
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

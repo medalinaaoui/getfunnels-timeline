@@ -35,7 +35,7 @@ export async function POST(req: any, context: any) {
       `https://api.clickup.com/api/v2/task/${task}/comment`,
       {
         comment_text,
-        notify_all: false,
+        notify_all: true,
       },
       {
         headers: {
