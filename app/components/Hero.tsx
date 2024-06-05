@@ -5,7 +5,7 @@ import Card from "./Card";
 
 const Hero = () => {
   return (
-    <div className="h-screen bg-primary max-sm:px-8 flex flex-col overflow-hidden items-center justify-between pb-8 md:pb-14 z-10 welcome-hero">
+    <div className="h-screen  relative bg-primary max-sm:px-8 flex flex-col overflow-hidden items-center justify-between pb-8 md:pb-14 z-10 welcome-hero">
       {/* <canvas className="min-h-screen w-1/2 anahowa absolute left-0 right-0 mx-auto -z-1 "></canvas> */}
       <div className="min-h-screen w-1/2 absolute left-0 right-0 mx-auto -z-20">
         <Image

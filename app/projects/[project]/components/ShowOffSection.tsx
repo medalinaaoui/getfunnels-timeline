@@ -16,7 +16,7 @@ const ShowOffSection = () => {
         </h3>
       </div>
 
-      <div className="pt-2 md:pt-14 px-12 grid grid-cols-2 md:grid-cols-3  gap-3">
+      <div className="pt-2 md:pt-14 px-12 grid grid-cols-2 md:grid-cols-3 2xl:mx-auto 2xl:max-w-6xl gap-3">
         <div className="w-full relative">
           <Image
             src={Project1}
@@ -26,7 +26,7 @@ const ShowOffSection = () => {
             className="h-full w-full object-contain"
           />
           <ActionButton className="absolute top-4 right-4">
-            <Link href="#">
+            <Link target="_blank" href="#">
               <span className="text-xl">
                 <IoEyeOutline />
               </span>
@@ -42,7 +42,7 @@ const ShowOffSection = () => {
             className="h-full w-full object-contain"
           />
           <ActionButton className="absolute top-4 right-4">
-            <Link href="#">
+            <Link target="_blank" href="#">
               <span className="text-xl">
                 <IoEyeOutline />
               </span>
@@ -58,7 +58,7 @@ const ShowOffSection = () => {
             className="h-full w-full object-contain"
           />
           <ActionButton className="absolute top-4 right-4">
-            <Link href="#">
+            <Link target="_blank" href="#">
               <span className="text-xl">
                 <IoEyeOutline />
               </span>

@@ -18,18 +18,20 @@ const ProjectDetails = ({
   const inspirations = urlsString ? getUrlsArray(urlsString) : [];
 
   return (
-    <section
-      id="details"
-      className="bg-darkText text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
-    >
-      <Inspirations inspirations={inspirations} />
-      <ProjectStructure tasks={tasks} />
-      <AdditionalInfoComponent
-        responsable={AdditionalInfo.responsable}
-        tools={AdditionalInfo.tools}
-        devisUrl={AdditionalInfo?.devisUrl}
-      />
-    </section>
+    <div className="bg-darkText">
+      <section
+        id="details"
+        className="bg-darkText 2xl:mx-auto 2xl:max-w-7xl text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
+      >
+        <Inspirations inspirations={inspirations} />
+        <ProjectStructure tasks={tasks} />
+        <AdditionalInfoComponent
+          responsable={AdditionalInfo.responsable}
+          tools={AdditionalInfo.tools}
+          devisUrl={AdditionalInfo?.devisUrl}
+        />
+      </section>
+    </div>
   );
 };
 export default ProjectDetails;
@@ -111,6 +113,7 @@ const ProjectSimpleButton = ({
   return (
     <Link
       href={href}
+      target="_blank"
       className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
     >
       <span className="text-lg">{text}</span>
@@ -134,6 +137,7 @@ const ProjectIconButton = ({
     <Link
       href={href}
       title="Inspiration 1"
+      target="_blank"
       className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
     >
       <div className="text-lg flex items-center gap-2">

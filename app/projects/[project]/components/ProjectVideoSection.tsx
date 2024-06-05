@@ -38,7 +38,7 @@ const ProjectVideoSection = ({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4 ">
         <div className="grid gap-2 items-center">
           {!projectDetailsisLoading && (
             <Description

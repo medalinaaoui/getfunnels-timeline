@@ -23,15 +23,21 @@ const Footer = () => {
               <h6 className={`font-semibold ${ClashDisplay.className}`}>
                 Phone:
               </h6>
-              <Link href="tel:+1-123-456-7890">+1-123-456-7890</Link>
+              <Link target="_blank" href="tel:+1-123-456-7890">
+                +1-123-456-7890
+              </Link>
             </li>
             <li className="grid gap-2">
               <h6 className="font-semibold">Phone:</h6>
-              <Link href="tel:+1-123-456-7890">+1-123-456-7890</Link>
+              <Link target="_blank" href="tel:+1-123-456-7890">
+                +1-123-456-7890
+              </Link>
             </li>
             <li className="grid gap-2">
               <h6 className="font-semibold">Phone:</h6>
-              <Link href="tel:+1-123-456-7890">+1-123-456-7890</Link>
+              <Link target="_blank" href="tel:+1-123-456-7890">
+                +1-123-456-7890
+              </Link>
             </li>
           </ul>
         </div>
@@ -40,14 +46,14 @@ const Footer = () => {
           <ul className="flex items-center gap-2 mt-2">
             <li>
               <ActionButton className="bg-transparent border border-lightText">
-                <Link className="text-xl" href={"x.com"}>
+                <Link target="_blank" className="text-xl" href={"x.com"}>
                   <FaXTwitter />
                 </Link>
               </ActionButton>
             </li>
             <li>
               <ActionButton className="bg-transparent border border-lightText">
-                <Link className="text-xl" href={"x.com"}>
+                <Link target="_blank" className="text-xl" href={"x.com"}>
                   <FaXTwitter />
                 </Link>
               </ActionButton>

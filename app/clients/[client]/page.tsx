@@ -19,7 +19,7 @@ const ClientPage = ({ params }: any) => {
   return isLoading ? (
     <Loader />
   ) : (
-    <div className="h-screen bg-primary welcome-hero pb-6 px-4 md:pb-14 md:px-24">
+    <div className="h-screen z-[1] relative bg-primary welcome-hero pb-6 px-4 md:pb-14 md:px-24">
       <div className="w-full flex justify-center">
         <div className="w-24 aspect-square ">
           <Image
@@ -35,13 +35,15 @@ const ClientPage = ({ params }: any) => {
       <h1 className="mt-4">Projects</h1>
       <div className="pt-6 flex gap-2 flex-wrap max-sm:justify-center">
         {data?.lists?.map((list: any) => (
-          <Button
-            className="h-40 tracking-card max-sm:px-10"
-            title={list.name}
-            key={list.id}
-          >
-            <Link href={`/projects/${list.id}`}>{list.name}</Link>
-          </Button>
+          <Link key={list.id} href={`/projects/${list.id}`}>
+            {" "}
+            <Button
+              className="h-40 tracking-card max-sm:px-10"
+              title={list.name}
+            >
+              {list.name}
+            </Button>
+          </Link>
         ))}
       </div>
     </div>

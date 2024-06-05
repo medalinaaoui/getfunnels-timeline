@@ -29,7 +29,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
         <BluredShip className="bottom-0 left-0" />
       </div>
 
-      <div className="pt-8 grid  grid-cols-1 md:grid-cols-2 gap-3 px-5 md:px-12 w-11/12 mx-auto">
+      <div className="pt-8 grid 2xl:mx-auto 2xl:max-w-7xl  grid-cols-1 md:grid-cols-2 gap-3 px-5 md:px-12 w-11/12 mx-auto">
         <div className="w-3/4 mx-auto">
           <Image
             src={MeetingImage}

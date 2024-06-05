@@ -70,6 +70,7 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
           {passed && (
             <Button className="mt-6 mx-auto">
               <Link
+                target="_blank"
                 href={
                   MeetingData?.custom_fields?.find(
                     (field: any) =>
