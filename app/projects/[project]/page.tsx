@@ -14,16 +14,16 @@ import LeftBar from "./components/LeftBar";
 import { useEffect, useState } from "react";
 
 const ProjectPage = ({ params }: any) => {
-  const [timer, setTimer] = useState(false);
+  // const [timer, setTimer] = useState(false);
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setTimer(true);
-      console.log("5s passed");
-    }, 5000);
+  // useEffect(() => {
+  //   const timerId = setTimeout(() => {
+  //     setTimer(true);
+  //     console.log("5s passed");
+  //   }, 5000);
 
-    return () => clearTimeout(timerId);
-  }, []);
+  //   return () => clearTimeout(timerId);
+  // }, []);
 
   const { data, isError, isLoading, error } = useQuery({
     queryKey: [params.project, "project"],
@@ -42,7 +42,7 @@ const ProjectPage = ({ params }: any) => {
       return acc;
     }, {} as { [key: string]: any });
 
-  if (isLoading && !timer) {
+  if (isLoading) {
     return (
       <div className="flex-1">
         <Loader />

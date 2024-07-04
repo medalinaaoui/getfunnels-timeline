@@ -85,11 +85,15 @@ const DashedBar = ({ tasks }: { tasks: any }) => {
           <div key={t.id} className="">
             <h5
               onClick={() => handleClick(t.id)}
-              className={`${
-                done ? "" : now ? "animate-pulse" : "opacity-40"
-              }  -translate-x-8  bg-primary hover:opacity-70 transition-all duration-300 cursor-pointer 2xl:text-xl`}
+              className={`-translate-x-8  bg-primary transition-all duration-300 cursor-pointer 2xl:text-xl`}
             >
-              {t?.name}
+              <span
+                className={`${
+                  done ? "" : now ? "animate-pulse" : "opacity-40"
+                } transition-all duration-300 hover:opacity-70 `}
+              >
+                {t?.name}
+              </span>
             </h5>
             <ul className="ml-2 text-sm flex flex-col gap-3 mt-3 ">
               {t?.subtasks?.map((subt: any) => {
