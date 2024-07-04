@@ -21,7 +21,7 @@ const ProjectDetails = ({
     <div className="bg-darkText">
       <section
         id="details"
-        className="bg-darkText 2xl:mx-auto 2xl:max-w-7xl text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
+        className="container mx-auto bg-darkText text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
       >
         <Inspirations inspirations={inspirations} />
         <ProjectStructure tasks={tasks} />
@@ -176,11 +176,13 @@ const ProjectSimpleCollapse = ({
       <div className="collapse-content">
         {subs?.map((subtask: any, i: number) => (
           <div
-            className={`bg-[#C9C9C9] p-2 rounded-lg ${i <= 0 ? "" : "mt-3"}`}
+            className={`bg-primary text-white p-2 rounded-lg ${
+              i <= 0 ? "" : "mt-3"
+            }`}
             key={i}
           >
             <details className="collapse">
-              <summary className="collapse-title p-0 max-h-4 -mb-7">
+              <summary className="collapse-title p-0 max-h-4 min-h-full leading-none">
                 <div className="flex items-center w-full justify-between">
                   <span className="">
                     {i + 1}. {subtask.name}

@@ -24,7 +24,7 @@ const ProjectVideoSection = ({
   // console.log("from project video sec: ", projectDetailsData);
 
   return (
-    <section id="strategy" className="py-14 px-5">
+    <section id="strategy" className="py-14 px-5 container mx-auto">
       <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
         <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
         <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
@@ -39,7 +39,7 @@ const ProjectVideoSection = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4 ">
-        <div className="grid gap-2 items-center">
+        <div className="flex flex-col items-start justify-center gap-2">
           {!projectDetailsisLoading && (
             <Description
               id={
@@ -58,13 +58,13 @@ const ProjectVideoSection = ({
             Video de lexplication du project sur Funnelytics
           </p>
 
-          <div className="w-full">
+          <div className="w-full h-72">
             <iframe
               title="video"
               src={videoUrl}
               width={1000}
               height={1000}
-              className="w-full h-full object-cover"
+              className="w-full h-full rounded-md object-cover"
             />
           </div>
         </div>
