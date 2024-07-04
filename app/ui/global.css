@@ -375,3 +375,9 @@ ul.ul-nav-bar li a,
     max-width: 1060px;
   }
 }
+
+@media (min-width: 1430px) {
+  .container {
+    max-width: 1280px;
+  }
+}
