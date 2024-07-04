@@ -22,13 +22,18 @@
 
 import Image from "next/image";
 import { quotes } from "@/lib/needed-data";
+import { useState, useEffect } from "react";
 const Loader = () => {
-  const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
-  };
+  const [quote, setQuote] = useState("");
 
-  const quote = getRandomQuote();
+  useEffect(() => {
+    const getRandomQuote = () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      return quotes[randomIndex];
+    };
+
+    setQuote(getRandomQuote());
+  }, []); // Empty dependency array ensures this effect runs only once
 
   return (
     <div className="h-screen w-screen flex justify-center items-center z-[60] bg-primary">

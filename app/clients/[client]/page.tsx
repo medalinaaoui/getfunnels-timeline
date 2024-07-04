@@ -1,4 +1,5 @@
 "use client";
+
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Logo from "@/public/logo-ds.png";
@@ -6,6 +7,7 @@ import Loader from "@/app/components/Loader";
 import axios from "@/lib/axios";
 import { Button } from "@/app/components/Button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const ClientPage = ({ params }: any) => {
   const { data, isError, isLoading, error } = useQuery({
@@ -14,9 +16,17 @@ const ClientPage = ({ params }: any) => {
       axios.get(`/clients/${params.client}`).then((response) => response.data),
   });
 
-  console.log(data);
+  const [timer, setTimer] = useState(false);
 
-  return isLoading ? (
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTimer(true);
+    }, 5000);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
+  return isLoading && !timer ? (
     <Loader />
   ) : (
     <div className="h-screen z-[1] relative bg-primary welcome-hero pb-6 px-4 md:pb-14 md:px-24">

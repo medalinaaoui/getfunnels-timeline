@@ -11,8 +11,20 @@ import Footer from "./components/Footer";
 import Loader from "@/app/components/Loader";
 import axios from "@/lib/axios";
 import LeftBar from "./components/LeftBar";
+import { useEffect, useState } from "react";
 
 const ProjectPage = ({ params }: any) => {
+  const [timer, setTimer] = useState(false);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTimer(true);
+      console.log("5s passed");
+    }, 5000);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
   const { data, isError, isLoading, error } = useQuery({
     queryKey: [params.project, "project"],
     queryFn: () =>
@@ -29,13 +41,16 @@ const ProjectPage = ({ params }: any) => {
       acc[field.name] = field.value !== undefined ? field.value : null;
       return acc;
     }, {} as { [key: string]: any });
-  // console.log("🚀 ~ ProjectPage ~ details:", details);
 
-  return isLoading ? (
-    <div className="flex-1">
-      <Loader />
-    </div>
-  ) : (
+  if (isLoading && !timer) {
+    return (
+      <div className="flex-1">
+        <Loader />
+      </div>
+    );
+  }
+
+  return (
     <>
       <LeftBar
         tasks={data?.structure?.subtasks}
