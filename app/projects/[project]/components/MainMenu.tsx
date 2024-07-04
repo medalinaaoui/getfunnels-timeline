@@ -48,7 +48,7 @@ const MainMenu = () => {
         </div>
         <div className="w-[2px] h-7 rounded-lg my-auto bg-lightText"></div>
 
-        <ul className="flex gap-2 sm:gap-4 mx-2 sm:mx-4 max-sm:text-xs ul-nav-bar">
+        <ul className="flex gap-2 sm:gap-7 mx-2 sm:mx-4 max-sm:text-xs ul-nav-bar">
           <li>
             <Link
               className="hover:opacity-70 transition-all duration-300"

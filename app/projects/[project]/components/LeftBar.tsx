@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "@/lib/axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
+import { isDone, isNow } from "@/lib/utils";
 
 const LeftBar = ({ name, tasks }: { name: string; tasks: any }) => {
   const [timeline, setTimeline] = useState(window.innerWidth > 1024);
@@ -77,27 +78,40 @@ const DashedBar = ({ tasks }: { tasks: any }) => {
 
   return (
     <div className="dashed-bar border-l-[3px] 2xl:border-l-[5px] border-dashed h-[90%] flex flex-col justify-center gap-8 2xl:gap-16">
-      {tasks?.map((t: any) => (
-        <div key={t.id} className="">
-          <h5
-            onClick={() => handleClick(t.id)}
-            className="-translate-x-8  bg-primary hover:opacity-70 transition-all duration-300 cursor-pointer 2xl:text-xl"
-          >
-            {t?.name}
-          </h5>
-          <ul className="ml-2 text-sm flex flex-col gap-3 mt-3 ">
-            {t?.subtasks?.map((subt: any) => (
-              <li
-                className="hover:opacity-70 transition-all duration-300 cursor-pointer 2xl:text-lg"
-                key={subt?.id}
-                onClick={() => handleClick(subt.id)}
-              >
-                {subt?.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {tasks?.map((t: any) => {
+        const done = isDone(t?.status);
+        const now = isNow(t?.status);
+        return (
+          <div key={t.id} className="">
+            <h5
+              onClick={() => handleClick(t.id)}
+              className={`${
+                done ? "" : now ? "animate-pulse" : "opacity-40"
+              }  -translate-x-8  bg-primary hover:opacity-70 transition-all duration-300 cursor-pointer 2xl:text-xl`}
+            >
+              {t?.name}
+            </h5>
+            <ul className="ml-2 text-sm flex flex-col gap-3 mt-3 ">
+              {t?.subtasks?.map((subt: any) => {
+                const done = isDone(subt?.status);
+                const now = isNow(subt?.status);
+
+                return (
+                  <li
+                    className={`${
+                      done ? "" : now ? "animate-pulse" : "opacity-40"
+                    } hover:opacity-70 transition-all duration-300 cursor-pointer 2xl:text-lg`}
+                    key={subt?.id}
+                    onClick={() => handleClick(subt.id)}
+                  >
+                    {subt?.name}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };

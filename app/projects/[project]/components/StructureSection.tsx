@@ -59,22 +59,6 @@ const StepInfo = ({ task }: { task: any }) => {
                 task={subtask.name}
                 subtasks={subtask.subtasks}
               />
-              {subtask?.status?.status === "achevée" ||
-              subtask?.status?.status === "fermée" ? (
-                <>
-                  <div className="opacity-30 pointer-events-none">
-                    <ValideTask id={subtask.id} />
-                  </div>
-                  <div className="opacity-30 pointer-events-none">
-                    <ModifyTask id={subtask.id} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <ValideTask id={subtask.id} />
-                  <ModifyTask id={subtask.id} />
-                </>
-              )}
             </div>
           </li>
         ))}

@@ -16,17 +16,7 @@ const ClientPage = ({ params }: any) => {
       axios.get(`/clients/${params.client}`).then((response) => response.data),
   });
 
-  const [timer, setTimer] = useState(false);
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setTimer(true);
-    }, 5000);
-
-    return () => clearTimeout(timerId);
-  }, []);
-
-  return isLoading && !timer ? (
+  return isLoading ? (
     <Loader />
   ) : (
     <div className="h-screen z-[1] relative bg-primary welcome-hero pb-6 px-4 md:pb-14 md:px-24">

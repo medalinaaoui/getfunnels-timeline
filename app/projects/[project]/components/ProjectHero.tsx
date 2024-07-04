@@ -18,7 +18,7 @@ const ProjectHero = ({
   return (
     <section
       style={backgroundImageStyle}
-      className={`bg-darkText project-hero-section text-lightText py-14 px-5 min-h-screen flex flex-col z-[1]`}
+      className={`bg-darkText project-hero-section text-lightText py-14 px-5 min-h-[66vh] flex flex-col z-[1]`}
     >
       <div className="w-full flex justify-center">
         <div className="w-32 2xl:w-44 ">
@@ -31,7 +31,7 @@ const ProjectHero = ({
           />
         </div>
       </div>
-      <div className="flex flex-col flex-1 items-center justify-center gap-6 w-10/12 mx-auto">
+      <div className="flex flex-col flex-1 items-center justify-center gap-6 w-10/12 mx-auto mt-3 sm:mt-8 ">
         <h1 className="text-primary text-xl 2xl:text-3xl">{name}</h1>
 
         <h2 className=" text-2xl md:text-4xl 2xl:mx-auto 2xl:max-w-7xl 2xl:text-6xl">
