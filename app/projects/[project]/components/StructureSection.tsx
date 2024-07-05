@@ -122,7 +122,7 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
 
   return (
     <ul className="timeline timeline-vertical mt-6">
-      {subtasks.map((item: any, i: number) => {
+      {subtasks?.map((item: any, i: number) => {
         // const status = ?.status;
         const done = isDone(item?.status);
         const now = isNow(item?.status);

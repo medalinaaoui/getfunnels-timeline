@@ -23,7 +23,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
 
   return (
     <section id="meetings" className="pb-2 sm:pb-14">
-      <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative">
+      <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative z-[1]">
         <h2>Réunion</h2>
         <BluredShip className="top-0 right-0" />
         <BluredShip className="bottom-0 left-0" />
