@@ -80,7 +80,9 @@ const ProjectPage = ({ params }: any) => {
           AdditionalInfo={{
             responsable: details["Projet / Responsable du projet"] || "",
             tools: details["Projet / Plateforme & Outils"] || "",
-            devisUrl: details["Offre / Lien de page"] || "",
+            devisUrl: details["Offre / Lien de page"]
+              ? details["Offre / Lien de page"]
+              : details["Offre / Lien de devis"] || "",
           }}
         />
 
