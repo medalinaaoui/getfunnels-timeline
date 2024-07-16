@@ -6,6 +6,8 @@ import { RiBillFill } from "react-icons/ri";
 import { getUrlsArray } from "@/lib/utils";
 
 import { MdUnfoldMore } from "react-icons/md";
+import { IoDocumentAttachOutline } from "react-icons/io5";
+import { FaGoogleDrive } from "react-icons/fa";
 const ProjectDetails = ({
   urlsString,
   AdditionalInfo,
@@ -21,7 +23,7 @@ const ProjectDetails = ({
     <div className="bg-darkText">
       <section
         id="details"
-        className="container mx-auto bg-darkText text-lightText pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
+        className="container mx-auto text-lightText sm:-mb-12 pt-14 px-5 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-3"
       >
         <Inspirations inspirations={inspirations} />
         <ProjectStructure tasks={tasks} />
@@ -42,13 +44,14 @@ const Inspirations = ({ inspirations }: { inspirations: string[] }) => {
       <h3 className="text-xl md:text-xl max-md:text-center mb-2 ">
         Inspirations
       </h3>
-      <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
+      <div className="project-details-card text-darkText p-2 block h-[410px] overflow-y-auto project-details-card-scroll-bar">
         {inspirations.map((inspiration, index) => (
-          <ProjectSimpleButton
-            key={inspiration}
-            href={inspiration}
-            text={`Inspiration ${index + 1}`}
-          />
+          <div key={inspiration} className={index > 0 ? "mt-2" : ""}>
+            <ProjectSimpleButton
+              href={inspiration}
+              text={`Inspiration ${index + 1}`}
+            />
+          </div>
         ))}
       </div>
     </article>
@@ -61,13 +64,11 @@ const ProjectStructure = ({ tasks }: any) => {
       <h3 className="text-xl md:text-xl max-md:text-center mb-2">
         Structure du project
       </h3>
-      <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
-        {tasks.map((task: any) => (
-          <ProjectSimpleCollapse
-            key={task.id}
-            title={task.name}
-            subs={task.subtasks}
-          />
+      <div className="project-details-card text-darkText p-2 block h-[410px] overflow-y-auto project-details-card-scroll-bar">
+        {tasks.map((task: any, i: any) => (
+          <div key={task.id} className={i > 0 ? "mt-2" : ""}>
+            <ProjectSimpleCollapse title={task.name} subs={task.subtasks} />
+          </div>
         ))}
       </div>
     </article>
@@ -84,18 +85,36 @@ const AdditionalInfoComponent = ({
       <h3 className="text-xl md:text-xl max-md:text-center mb-2">
         Infos Supplémentaires
       </h3>
-      <div className="project-details-card h-full text-darkText p-2 flex flex-col min-h-[340px] gap-2">
-        <ProjectIconCollapse
-          icon={<FiUser />}
-          title="Responsable du project "
-          text={responsable}
-        />
+      <div className="project-details-card text-darkText p-2 block h-[410px] overflow-y-auto project-details-card-scroll-bar">
+        <div className="-mt-2">
+          <ProjectIconCollapse
+            icon={<FiUser />}
+            title="Responsable du project "
+            text={responsable}
+          />
+        </div>
         <ProjectIconCollapse
           title="Platformes & Outils"
           text={tools}
           icon={<LiaToolsSolid />}
         />
-        <ProjectIconButton href={devisUrl} text="Devis" icon={<RiBillFill />} />
+        <div className="mt-2">
+          <ProjectIconButton
+            href={devisUrl}
+            text="Devis"
+            icon={<RiBillFill />}
+          />
+        </div>
+        <ProjectIconCollapse
+          title="Onboarding"
+          text={""}
+          icon={<IoDocumentAttachOutline />}
+        />
+        <ProjectIconCollapse
+          title="Drive Link"
+          text={""}
+          icon={<FaGoogleDrive />}
+        />
       </div>
     </article>
   );
@@ -138,7 +157,7 @@ const ProjectIconButton = ({
       href={href}
       title="Inspiration 1"
       target="_blank"
-      className="inspiration-btn h-fit flex w-full px-6 py-4 items-center justify-between"
+      className="inspiration-btn h-fit flex w-full px-4 py-4 items-center justify-between"
     >
       <div className="text-lg flex items-center gap-2">
         <span className="text-lg">{icon}</span>
@@ -218,7 +237,7 @@ const ProjectIconCollapse = ({
   return (
     <div
       defaultChecked
-      className="collapse collapse-arrow inspiration-btn h-fit"
+      className="collapse collapse-arrow inspiration-btn h-fit mt-2"
     >
       <input defaultChecked title="input" type="radio" name="my-accordion-2" />
       <div className="collapse-title text-lg flex items-center gap-2">

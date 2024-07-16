@@ -24,48 +24,52 @@ const ProjectVideoSection = ({
   // console.log("from project video sec: ", projectDetailsData);
 
   return (
-    <section id="strategy" className="py-14 px-5 container mx-auto">
-      <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
-        <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-          Lorem Ipsum est un texte d&apos;espace réservé
-        </h3>
+    <section id="strategy" className="py-14 px-5 bg-white">
+      <div className="container mx-auto">
+        <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
+          <h2 className="text-primary text-center text-lg">
+            Get Funnels Agency
+          </h2>
+          <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
+            Lorem Ipsum est un texte d&apos;espace réservé
+          </h3>
 
-        <p className="text-sm text-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim consequat.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4 ">
-        <div className="flex flex-col items-start justify-center gap-2">
-          {!projectDetailsisLoading && (
-            <Description
-              id={
-                projectDetailsData?.subtasks?.find(
-                  (task: any) => task.name === "Stratégie"
-                ).id
-              }
-            />
-          )}
-          <p className="text-primary">
-            Duis aute irure dolor in reprehenderit in voluptate
+          <p className="text-sm text-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim consequat.
           </p>
         </div>
-        <div className="">
-          <p className="text-xs text-darkText text-center block mb-2">
-            Video de lexplication du project sur Funnelytics
-          </p>
 
-          <div className="w-full h-72">
-            <iframe
-              title="video"
-              src={videoUrl}
-              width={1000}
-              height={1000}
-              className="w-full h-full rounded-md object-cover"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 w-5/6 gap-6 mx-auto mt-4 ">
+          <div className="flex flex-col items-start justify-center gap-2">
+            {!projectDetailsisLoading && (
+              <Description
+                id={
+                  projectDetailsData?.subtasks?.find(
+                    (task: any) => task.name === "Stratégie"
+                  ).id
+                }
+              />
+            )}
+            <p className="text-primary">
+              Duis aute irure dolor in reprehenderit in voluptate
+            </p>
+          </div>
+          <div className="">
+            <p className="text-xs text-darkText text-center block mb-2">
+              Video de lexplication du project sur Funnelytics
+            </p>
+
+            <div className="w-full h-72 ">
+              <iframe
+                title="video"
+                src={videoUrl}
+                width={1000}
+                height={1000}
+                className="w-full h-full rounded-md object-cover border border-black"
+              />
+            </div>
           </div>
         </div>
       </div>

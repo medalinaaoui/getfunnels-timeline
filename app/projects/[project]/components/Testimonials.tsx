@@ -57,118 +57,122 @@ const Testimonials = () => {
 
   return (
     <section className="py-6 md:py-14 px-5">
-      <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
-        <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-          Lorem Ipsum est un texte d&apos;espace réservé
-        </h3>
-      </div>
+      <div className="container mx-auto">
+        <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8">
+          <h2 className="text-primary text-center text-lg">
+            Get Funnels Agency
+          </h2>
+          <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
+            Lorem Ipsum est un texte d&apos;espace réservé
+          </h3>
+        </div>
 
-      <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
-        <Swiper
-          breakpoints={{
-            "@0.00": {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            "@1.50": {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          slidesPerView={1}
-          spaceBetween={10}
-          centeredSlides={true}
-          navigation={true}
-          mousewheel={true}
-          //   keyboard={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination, Keyboard, Mousewheel, Navigation]}
-          className="mySwiper"
-        >
-          {testimonials?.map((testi) => (
-            <SwiperSlide key={testi.id}>
-              <Testimonial
-                id={testi.id}
-                name={testi.name}
-                image={testi.image}
-                video={testi.video}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+        <div className="pt-14 px-5 w-[70vw] mx-auto overflow-x-hidden">
+          <Swiper
+            breakpoints={{
+              "@0.00": {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              "@0.75": {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              "@1.00": {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+              "@1.50": {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+            }}
+            slidesPerView={1}
+            spaceBetween={10}
+            centeredSlides={true}
+            navigation={true}
+            mousewheel={true}
+            //   keyboard={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination, Keyboard, Mousewheel, Navigation]}
+            className="mySwiper"
+          >
+            {testimonials?.map((testi) => (
+              <SwiperSlide key={testi.id}>
+                <Testimonial
+                  id={testi.id}
+                  name={testi.name}
+                  image={testi.image}
+                  video={testi.video}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className="mt-8 flex justify-center">
-        <Button onClick={showModel}>J’ajoute un témoignage</Button>
-        <dialog id={`add_testimonials_modal`} className="modal">
-          <div className="modal-box model-popup min-h-[350px] flex justify-center items-center">
-            {modalContent ? (
-              modalContent
-            ) : (
-              <div>
-                <h3 className="font-bold text-lg text-center pb-2 text-primary">
-                  Lorem Ipsum est un texte out
-                </h3>
-                <p className="text-xs text-center text-paragraph pb-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim consequat.
-                </p>
-                <div className="flex flex-col gap-2 items-center mt-1">
-                  <Button
-                    className="w-10/12 justify-center"
-                    onClick={() => handleOpenModal(<UploadTestimonial />)}
-                  >
-                    Upload Video
-                  </Button>
-                  <Button
-                    className="w-10/12 justify-center"
-                    onClick={() =>
-                      handleOpenModal(
-                        <SendTesti
-                          id={"8694jpa6r"}
-                          closeModel={() => hideModel()}
-                        />
-                      )
-                    }
-                  >
-                    Write a testimonial
-                  </Button>
+        <div className="mt-8 flex justify-center">
+          <Button onClick={showModel}>J’ajoute un témoignage</Button>
+          <dialog id={`add_testimonials_modal`} className="modal">
+            <div className="modal-box model-popup min-h-[350px] flex justify-center items-center">
+              {modalContent ? (
+                modalContent
+              ) : (
+                <div>
+                  <h3 className="font-bold text-lg text-center pb-2 text-primary">
+                    Lorem Ipsum est un texte out
+                  </h3>
+                  <p className="text-xs text-center text-paragraph pb-2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim consequat.
+                  </p>
+                  <div className="flex flex-col gap-2 items-center mt-1">
+                    <Button
+                      className="w-10/12 justify-center"
+                      onClick={() => handleOpenModal(<UploadTestimonial />)}
+                    >
+                      Upload Video
+                    </Button>
+                    <Button
+                      className="w-10/12 justify-center"
+                      onClick={() =>
+                        handleOpenModal(
+                          <SendTesti
+                            id={"8694jpa6r"}
+                            closeModel={() => hideModel()}
+                          />
+                        )
+                      }
+                    >
+                      Write a testimonial
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className="modal-action">
-              <div className="w-full">
-                <form method="dialog">
-                  <ActionButton className="absolute top-2 right-2">
-                    <span className="text-xl">
-                      <MdOutlineClose />
+              )}
+              <div className="modal-action">
+                <div className="w-full">
+                  <form method="dialog">
+                    <ActionButton className="absolute top-2 right-2">
+                      <span className="text-xl">
+                        <MdOutlineClose />
+                      </span>
+                    </ActionButton>
+                  </form>
+                  <ActionButton
+                    onClick={() => handleOpenModal(null)}
+                    className="absolute top-2 left-2 bg-transparent border border-black"
+                  >
+                    <span className="text-2xl text-darkText">
+                      <IoIosArrowRoundBack />
                     </span>
                   </ActionButton>
-                </form>
-                <ActionButton
-                  onClick={() => handleOpenModal(null)}
-                  className="absolute top-2 left-2 bg-transparent border border-black"
-                >
-                  <span className="text-2xl text-darkText">
-                    <IoIosArrowRoundBack />
-                  </span>
-                </ActionButton>
+                </div>
               </div>
             </div>
-          </div>
-        </dialog>
+          </dialog>
+        </div>
       </div>
     </section>
   );

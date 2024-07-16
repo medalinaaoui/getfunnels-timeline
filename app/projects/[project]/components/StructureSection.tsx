@@ -14,23 +14,33 @@ import axios from "@/lib/axios";
 const StructureSection = ({ tasks }: { tasks: any }) => {
   return (
     <section id="structure" className="py-14 max-sm:pt-4 px-5">
-      <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8 2xl:mx-auto 2xl:max-w-7xl">
-        <h2 className="text-primary text-center text-lg">Get Funnels Agency</h2>
-        <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-          Lorem Ipsum est un texte d&apos;espace réservé
-        </h3>
+      <div className="container mx-auto">
+        <div className=" flex flex-col gap-4 items-center text-center w-10/12 mx-auto my-8 2xl:mx-auto 2xl:max-w-7xl">
+          <h2 className="text-primary text-center text-lg">
+            Get Funnels Agency
+          </h2>
+          <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
+            Lorem Ipsum est un texte d&apos;espace réservé
+          </h3>
 
-        <p className="text-sm text-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim consequat.
-        </p>
-      </div>
+          <p className="text-sm text-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim consequat.
+          </p>
+        </div>
 
-      <div className="pt-6 sm:pt-14 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 2xl:mx-auto 2xl:max-w-7xl">
-        {tasks?.map((t: any) => (
-          <StepInfo task={t} key={t.id} />
-        ))}
+        <div
+          className={`pt-6 sm:pt-2 px-5 grid grid-cols-1 md:grid-cols-2 ${
+            tasks?.length > 2
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-2 w-[80%] mx-auto"
+          } gap-3 2xl:mx-auto 2xl:max-w-7xl`}
+        >
+          {tasks?.map((t: any) => (
+            <StepInfo task={t} key={t.id} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -134,7 +144,7 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
               <hr
                 className={`${
                   done
-                    ? "bg-greenCheck"
+                    ? "bg-green-600"
                     : now
                     ? "bg-primary"
                     : "bg-primary opacity-30"
@@ -146,7 +156,7 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
             <div
               className={`timeline-${i % 2 == 0 ? "start" : "end"} ${
                 done
-                  ? "bg-greenCheck border-greenCheck"
+                  ? "bg-green-600 border-green-600"
                   : now
                   ? "bg-primary border-primary"
                   : "bg-primary opacity-30 border-primary"
@@ -183,7 +193,7 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
                 fill="currentColor"
                 className={`w-5 h-5  ${
                   done
-                    ? "text-greenCheck "
+                    ? "text-green-600 "
                     : now
                     ? "text-primary"
                     : "text-primary opacity-30"
@@ -200,7 +210,7 @@ const TimeLine = ({ subtasks }: { subtasks: any }) => {
               <hr
                 className={`${
                   done
-                    ? "bg-greenCheck"
+                    ? "bg-green-600"
                     : now
                     ? "bg-primary"
                     : "bg-primary opacity-30"
@@ -336,9 +346,7 @@ const PreviewLink = ({
       }`}
     >
       {disabled ? (
-        <span
-          className={`text-xl ${done ? "text-greenCheck" : "text-primary"}`}
-        >
+        <span className={`text-xl ${done ? "text-green-600" : "text-primary"}`}>
           <IoEyeOutline />
         </span>
       ) : (
@@ -351,7 +359,7 @@ const PreviewLink = ({
           }
         >
           <span
-            className={`text-xl ${done ? "text-greenCheck" : "text-primary"}`}
+            className={`text-xl ${done ? "text-green-600" : "text-primary"}`}
           >
             <IoEyeOutline />
           </span>

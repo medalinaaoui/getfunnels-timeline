@@ -34,14 +34,10 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: -1;
 }
 
-/* .anahowa {
-  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 91.86%);
-  opacity: 0.07;
-  mix-blend-mode: hard-light;
-  filter: blur(40px);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  backdrop-filter: blur(5px);
-} */
+.text-stroke {
+  -webkit-text-stroke: 0.001px #c793f7;
+  text-stroke: 0.001px #c793f7;
+}
 
 h1 {
   leading-trim: both;
@@ -379,5 +375,88 @@ ul.ul-nav-bar li a,
 @media (min-width: 1430px) {
   .container {
     max-width: 1280px;
+  }
+}
+
+.portfolio-image:before {
+  content: "";
+  width: 100%;
+  height: 30px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  background-image: url(https://getfunnels.agency/hosted/images/09/95832f55fc444a9556296c1c907242/GF_NV_LogoBlacks.png) !important;
+  background-size: 60px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  transition: filter 5s, transform 5s, background-color 5s;
+}
+
+.portfolio-image {
+  transition: background-position 5s;
+
+  background-size: 100% !important;
+  background-position: center 0 !important;
+}
+.portfolio-image:hover {
+  background-position: center 100% !important;
+  transition: background-position 30s;
+}
+
+@media (min-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #c5c5c5;
+    border-radius: 3px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #8200ff6b;
+    border-radius: 3px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #12afaf;
+  }
+
+  .project-details-card-scroll-bar::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+  }
+  .project-details-card-scroll-bar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .project-details-card-scroll-bar::-webkit-scrollbar-thumb {
+    background: #12afaf00;
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff00,
+      #e3daff,
+      #c9b4ff,
+      #b28dff,
+      #9d63ffdb,
+      #9d63ffdb,
+      #9d63ffdb,
+      #9d63ffd9,
+      #b28dff,
+      #c9b4ff,
+      #e3daff,
+      #ffffff00
+    );
+    border-radius: 3px;
   }
 }

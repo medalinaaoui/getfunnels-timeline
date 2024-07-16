@@ -32,7 +32,9 @@ const ProjectHero = ({
         </div>
       </div>
       <div className="flex flex-col flex-1 items-center justify-center gap-6 w-10/12 mx-auto mt-3 sm:mt-8 ">
-        <h1 className="text-primary text-xl 2xl:text-3xl">{name}</h1>
+        <h1 className="text-primary text-2xl 2xl:text-4xl text-stroke">
+          {name}
+        </h1>
 
         <h2 className=" text-2xl md:text-4xl 2xl:mx-auto 2xl:max-w-7xl 2xl:text-6xl">
           {description}

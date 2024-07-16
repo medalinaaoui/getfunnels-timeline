@@ -16,7 +16,7 @@ const config: Config = {
         darkText: "#000",
         lightText: "#FFF",
         disabled: "#e1dada",
-        greenCheck: "#1bb32d",
+        greenCheck: "#1bb32f",
       },
     },
   },
