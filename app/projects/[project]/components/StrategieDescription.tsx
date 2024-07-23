@@ -14,7 +14,11 @@ const Description = ({ id }: any) => {
   });
   // console.log("StrategieData: ", StrategieData);
 
-  return <p className="text-paragraph">{StrategieData?.description}</p>;
+  return (
+    <p className="text-paragraph max-sm:text-center">
+      {StrategieData?.description}
+    </p>
+  );
 };
 
 export default Description;

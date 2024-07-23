@@ -31,6 +31,8 @@ const ProjectDetails = ({
           responsable={AdditionalInfo.responsable}
           tools={AdditionalInfo.tools}
           devisUrl={AdditionalInfo?.devisUrl}
+          onBoarding={AdditionalInfo.onBoarding}
+          driveLink={AdditionalInfo.driveLink}
         />
       </section>
     </div>
@@ -79,6 +81,8 @@ const AdditionalInfoComponent = ({
   responsable,
   tools,
   devisUrl,
+  onBoarding,
+  driveLink,
 }: AdditionalInfoI) => {
   return (
     <article className="max-md:w-11/12 max-md:mx-auto">
@@ -105,16 +109,20 @@ const AdditionalInfoComponent = ({
             icon={<RiBillFill />}
           />
         </div>
-        <ProjectIconCollapse
-          title="Onboarding"
-          text={""}
-          icon={<IoDocumentAttachOutline />}
-        />
-        <ProjectIconCollapse
-          title="Drive Link"
-          text={""}
-          icon={<FaGoogleDrive />}
-        />
+        <div className="mt-2">
+          <ProjectIconButton
+            href={onBoarding}
+            text="Onboarding"
+            icon={<IoDocumentAttachOutline />}
+          />
+        </div>
+        <div className="mt-2">
+          <ProjectIconButton
+            href={driveLink}
+            text="Drive Link"
+            icon={<FaGoogleDrive />}
+          />
+        </div>
       </div>
     </article>
   );
@@ -255,4 +263,6 @@ interface AdditionalInfoI {
   responsable: string;
   tools: string;
   devisUrl: string;
+  onBoarding: string;
+  driveLink: string;
 }

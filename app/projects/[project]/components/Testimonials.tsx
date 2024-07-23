@@ -160,14 +160,16 @@ const Testimonials = () => {
                       </span>
                     </ActionButton>
                   </form>
-                  <ActionButton
-                    onClick={() => handleOpenModal(null)}
-                    className="absolute top-2 left-2 bg-transparent border border-black"
-                  >
-                    <span className="text-2xl text-darkText">
-                      <IoIosArrowRoundBack />
-                    </span>
-                  </ActionButton>
+                  {modalContent && (
+                    <ActionButton
+                      onClick={() => handleOpenModal(null)}
+                      className="absolute top-2 left-2 bg-transparent border border-black"
+                    >
+                      <span className="text-2xl text-darkText">
+                        <IoIosArrowRoundBack />
+                      </span>
+                    </ActionButton>
+                  )}
                 </div>
               </div>
             </div>
@@ -362,13 +364,13 @@ const Testimonial = ({
           <h3 className="font-bold text-lg text-center text-primary">{name}</h3>
 
           <div className="grid">
-            <div className="w-full mt-4">
+            <div className="w-full h-72 mt-4">
               <iframe
                 title="video"
                 src={video}
                 width={1000}
                 height={1000}
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-md object-cover border border-black"
               />
             </div>
           </div>

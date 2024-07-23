@@ -52,7 +52,7 @@ const ProjectVideoSection = ({
                 }
               />
             )}
-            <p className="text-primary">
+            <p className="text-primary max-sm:text-center">
               Duis aute irure dolor in reprehenderit in voluptate
             </p>
           </div>

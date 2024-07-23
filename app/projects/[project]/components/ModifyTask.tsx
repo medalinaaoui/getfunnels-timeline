@@ -122,14 +122,16 @@ const ModifyTask = ({
                   </span>
                 </ActionButton>
               </form>
-              <ActionButton
-                onClick={() => handleOpenModal(null)}
-                className="absolute top-2 left-2 bg-transparent border border-black"
-              >
-                <span className="text-2xl text-darkText">
-                  <IoIosArrowRoundBack />
-                </span>
-              </ActionButton>
+              {modalContent && (
+                <ActionButton
+                  onClick={() => handleOpenModal(null)}
+                  className="absolute top-2 left-2 bg-transparent border border-black"
+                >
+                  <span className="text-2xl text-darkText">
+                    <IoIosArrowRoundBack />
+                  </span>
+                </ActionButton>
+              )}
             </div>
           </div>
         </div>

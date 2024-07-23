@@ -83,6 +83,8 @@ const ProjectPage = ({ params }: any) => {
             devisUrl: details["Offre / Lien de page"]
               ? details["Offre / Lien de page"]
               : details["Offre / Lien de devis"] || "",
+            driveLink: details["Projet / Google Drive"] || "",
+            onBoarding: details["Projet / Onboarding"] || "",
           }}
         />
 
