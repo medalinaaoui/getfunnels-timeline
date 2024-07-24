@@ -63,7 +63,7 @@ const Testimonials = () => {
             Get Funnels Agency
           </h2>
           <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-            Lorem Ipsum est un texte d&apos;espace réservé
+            DES ENTREPRENEURS VISIONNAIRES QUI ONT CHOISI GET FUNNELS
           </h3>
         </div>
 
@@ -113,7 +113,7 @@ const Testimonials = () => {
         </div>
 
         <div className="mt-8 flex justify-center">
-          <Button onClick={showModel}>J’ajoute un témoignage</Button>
+          <Button onClick={showModel}>{`J'ajoute un témoignage`}</Button>
           <dialog id={`add_testimonials_modal`} className="modal">
             <div className="modal-box model-popup min-h-[350px] flex justify-center items-center">
               {modalContent ? (
@@ -121,19 +121,19 @@ const Testimonials = () => {
               ) : (
                 <div>
                   <h3 className="font-bold text-lg text-center pb-2 text-primary">
-                    Lorem Ipsum est un texte out
+                    Votre satisfaction est notre priorité absolue
                   </h3>
                   <p className="text-xs text-center text-paragraph pb-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim consequat.
+                    {`Vous faites partie de notre aventure d'innovation, de
+                    confiance et d'efficacité. Merci de partager votre
+                    expérience avec nous.`}
                   </p>
                   <div className="flex flex-col gap-2 items-center mt-1">
                     <Button
                       className="w-10/12 justify-center"
                       onClick={() => handleOpenModal(<UploadTestimonial />)}
                     >
-                      Upload Video
+                      Ajouter une vidéo
                     </Button>
                     <Button
                       className="w-10/12 justify-center"
@@ -146,7 +146,7 @@ const Testimonials = () => {
                         )
                       }
                     >
-                      Write a testimonial
+                      Écrire un témoignage
                     </Button>
                   </div>
                 </div>
@@ -252,13 +252,12 @@ ${finalUrl}
   return (
     <div>
       <h3 className="font-bold text-lg text-center text-primary">
-        Lorem Ipsum est un texte meeting
+        Ajouter une vidéo
       </h3>
       <div className="flex flex-col items-center gap-4 mt-1">
         <p className="text-xs text-center text-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim consequat.
+          Cliquez ci-dessous pour ajouter votre vidéo. Téléchargez simplement
+          votre fichier et partagez votre témoignage en vidéo avec nous.
         </p>
         <div className="relative hover:opacity-70 sm:w-44 sm:h-44 bg-[#e1dada] rounded-full  transition duration-500">
           <div className="w-24 h-24 sm:w-44 sm:h-44 aspect-square flex justify-center items-center">

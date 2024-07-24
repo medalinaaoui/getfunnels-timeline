@@ -25,19 +25,18 @@ ${comment}
   return (
     <div>
       <h3 className="font-bold text-lg text-center text-primary">
-        Lorem Ipsum est un texte meeting
+        Donner des remarques
       </h3>
       <div className="flex flex-col items-center gap-4 mt-1">
         <p className="text-xs text-center text-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim consequat.
+          Ajoutez toutes vos remarques et notes ici. On les regarde vite et on
+          vous donne un retour dès que possible.
         </p>
         <TextArea
           value={note}
           onChange={(e: any) => setNote(e.target.value)}
           className="w-full sm:w-full min-h-[140px]"
-          placeholder="note..."
+          placeholder="remarques..."
         />
         <Button
           className="w-10/12 justify-center"

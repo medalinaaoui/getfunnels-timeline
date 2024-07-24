@@ -66,7 +66,7 @@ const ModifyTask = ({
           ) : (
             <div>
               <h3 className="font-bold text-lg text-center text-primary">
-                Lorem Ipsum est un texte out
+                Modifications
               </h3>
               <div className="flex flex-col gap-2 items-center mt-1">
                 <Button
@@ -77,7 +77,7 @@ const ModifyTask = ({
                     )
                   }
                 >
-                  Note supplémentaire
+                  Donnez des remarques
                 </Button>
                 <Button
                   className="w-10/12 justify-center"
@@ -87,7 +87,7 @@ const ModifyTask = ({
                     )
                   }
                 >
-                  Demander un réunion
+                  Demander une réunion
                 </Button>
                 <Button
                   className="w-10/12 justify-center"

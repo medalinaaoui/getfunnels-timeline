@@ -33,7 +33,7 @@ const ShowOffSection = () => {
             Get Funnels Agency
           </h2>
           <h3 className="text-2xl md:text-4xl font-semibold text-center text-lightText">
-            Lorem Ipsum est un texte d&apos;espace réservé
+            {`IMAGINEZ VOTRE PROJET SOUS SON MEILLEUR JOUR`}
           </h3>
         </div>
 

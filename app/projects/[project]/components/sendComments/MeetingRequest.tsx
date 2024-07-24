@@ -21,14 +21,14 @@ const MeetingRequest = ({
   return (
     <div>
       <h3 className="font-bold text-lg text-center text-primary">
-        Lorem Ipsum est un texte meeting
+        Demander une réunion
       </h3>
       <div className="flex flex-col gap-2 items-center mt-1">
         <div className="flex flex-col items-center gap-4">
           <p className="text-xs text-center text-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim consequat.
+            {`Pour demander une réunion, cliquez sur "ENVOYER". On fixe un
+            rendez-vous avec vous pour discuter de vos modifications plus en
+            détail.`}
           </p>
           <Button
             className="w-10/12 justify-center"

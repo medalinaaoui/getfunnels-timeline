@@ -2,6 +2,7 @@ import Light from "@/public/Union.svg";
 import Logo from "@/public/logo-ds.png";
 import Image from "next/image";
 import Card from "./Card";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -28,12 +29,12 @@ const Hero = () => {
 
       <div className="flex flex-col items-center gap-4 max-sm:mt-14 ">
         <h1 className="flex text-center sm:w-2/3">
-          Lorem ipsum dolor sit amet consecteturND
+          À VOTRE TOUR DE SCALER VOTRE BUSINESS !
         </h1>
         <div className="flex max-sm:my-2 sm:w-1/2">
           <p className="text-center">
-            Lorem ipsum dolor sit amet consectetur. Euismod sed sed id inLorem r
-            smod sed sed id inipsum dolor sit amet consectetuND
+            {`Gardez un œil sur l'ensemble de vos projets pour avoir une vision
+            claire et complète de l’état actuel et des prochaines étapes.`}
           </p>
         </div>
 
@@ -42,7 +43,10 @@ const Hero = () => {
 
       <div className="max-sm:flex-1 flex justify-center items-end">
         <span className="text-xs text-center sm:text-sm poppins">
-          For Any Inquiries Please Contact - digitalspeak@contact.com
+          Pour toute demande, veuillez contacter -{" "}
+          <Link href="mailto:contact@digitalspeak.group">
+            contact@digitalspeak.group
+          </Link>
         </span>
       </div>
     </div>

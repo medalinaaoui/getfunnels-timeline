@@ -20,13 +20,12 @@ const StructureSection = ({ tasks }: { tasks: any }) => {
             Get Funnels Agency
           </h2>
           <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-            Lorem Ipsum est un texte d&apos;espace réservé
+            UN COUP D’ŒIL SUR VOTRE PROJET
           </h3>
 
           <p className="text-sm text-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim consequat.
+            {`Une vue d'ensemble de votre projet pour avoir une vision claire de
+            l’état actuel et des prochaines étapes`}
           </p>
         </div>
 

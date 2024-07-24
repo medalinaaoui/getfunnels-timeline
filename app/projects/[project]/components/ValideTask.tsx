@@ -91,12 +91,11 @@ const ValideTask = ({
       <dialog id={`${id}Valide`} className="modal">
         <div className="modal-box model-popup">
           <h3 className="font-bold text-lg text-center text-primary">
-            You sure?
+            Validation
           </h3>
 
           <p className="text-sm text-center mt-3 text-paragraph">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure nisi
-            assumenda
+            Merci de nous faire savoir si vous validez cette phase du projet
           </p>
           <div className="modal-action">
             <div className="w-full flex justify-center gap-6">
@@ -110,7 +109,7 @@ const ValideTask = ({
                   <Button className="">Non</Button>
                 </div>
               </form>
-              <Button onClick={handleCommentSent}>Yes</Button>
+              <Button onClick={handleCommentSent}>Oui</Button>
             </div>
           </div>
         </div>

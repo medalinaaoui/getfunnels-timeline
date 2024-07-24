@@ -32,7 +32,7 @@ const ClientPage = ({ params }: any) => {
         </div>
       </div>
 
-      <h1 className="mt-4">Projects</h1>
+      <h1 className="mt-4">PROJETS</h1>
       <div className="pt-6 flex gap-2 flex-wrap max-sm:justify-center">
         {data?.lists?.map((list: any) => (
           <Link key={list.id} href={`/projects/${list.id}`}>

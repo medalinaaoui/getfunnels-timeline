@@ -24,7 +24,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
   return (
     <section id="meetings" className="pb-2 sm:pb-14">
       <div className="bg-darkText text-lightText py-14 px-5 overflow-hidden relative z-[1]">
-        <h2>Réunion</h2>
+        <h2>Réunions</h2>
         <BluredShip className="top-0 right-0" />
         <BluredShip className="bottom-0 left-0" />
       </div>
@@ -42,7 +42,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
         <div className="grid gap-3">
           <article className="text-darkText mt-4">
             <h3 className="text-2xl md:text-xl max-md:text-center mb-2 font-semibold">
-              Réunion planifiée
+              Réunions planifiées
             </h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               {projectDetailsData?.subtasks
@@ -59,7 +59,7 @@ const Meetings = ({ projectDetailsID }: { projectDetailsID: string }) => {
           </article>
           <article className="text-darkText mt-4">
             <h3 className="text-2xl md:text-xl max-md:text-center mb-2 font-semibold">
-              Réunion passer
+              Réunions passées
             </h3>
             <div className="project-details-card text-darkText p-2 flex flex-col min-h-[300px] gap-2">
               {projectDetailsData?.subtasks

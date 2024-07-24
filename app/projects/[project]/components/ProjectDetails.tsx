@@ -64,7 +64,7 @@ const ProjectStructure = ({ tasks }: any) => {
   return (
     <article className="max-md:w-11/12 max-md:mx-auto">
       <h3 className="text-xl md:text-xl max-md:text-center mb-2">
-        Structure du project
+        Structure du projet
       </h3>
       <div className="project-details-card text-darkText p-2 block h-[410px] overflow-y-auto project-details-card-scroll-bar">
         {tasks.map((task: any, i: any) => (
@@ -98,7 +98,7 @@ const AdditionalInfoComponent = ({
           />
         </div>
         <ProjectIconCollapse
-          title="Platformes & Outils"
+          title="Plateformes et outils"
           text={tools}
           icon={<LiaToolsSolid />}
         />
@@ -119,7 +119,7 @@ const AdditionalInfoComponent = ({
         <div className="mt-2">
           <ProjectIconButton
             href={driveLink}
-            text="Drive Link"
+            text="Lien Google Drive"
             icon={<FaGoogleDrive />}
           />
         </div>

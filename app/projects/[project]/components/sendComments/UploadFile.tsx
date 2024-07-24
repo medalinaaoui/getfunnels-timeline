@@ -70,13 +70,12 @@ ${finalUrl}
   return (
     <div>
       <h3 className="font-bold text-lg text-center text-primary">
-        Lorem Ipsum est un texte meeting
+        Ajouter un document
       </h3>
       <div className="flex flex-col items-center gap-4 mt-1">
         <p className="text-xs text-center text-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim consequat.
+          Si vous avez toutes vos modifications dans un document, ajoutez-le
+          ici. On le passe en revue et vous fait un retour pour avancer.
         </p>
         <div className="relative hover:opacity-70 sm:w-44 sm:h-44 bg-[#e1dada] rounded-full  transition duration-500">
           <div className="w-24 h-24 sm:w-44 sm:h-44 aspect-square flex justify-center items-center">

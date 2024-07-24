@@ -54,7 +54,7 @@ const Meeting = ({ id, passed }: { id: string; passed?: boolean }) => {
       <dialog id={`${id}_meeting`} className="modal">
         <div className="modal-box model-popup ">
           <h3 className="font-bold text-lg text-center text-primary">
-            {passed ? "Récapitulatif de la réunion" : "Objectif de réunion"}
+            {passed ? "Récapitulatif de la réunion" : "Objectifs de la réunion"}
           </h3>
 
           <div className="step-info-card p-6 min-h-[250px] mt-6">

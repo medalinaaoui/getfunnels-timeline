@@ -31,13 +31,13 @@ const ProjectVideoSection = ({
             Get Funnels Agency
           </h2>
           <h3 className="text-2xl md:text-4xl font-semibold text-center text-darkText">
-            Lorem Ipsum est un texte d&apos;espace réservé
+            Stratégie et objectifs
           </h3>
 
           <p className="text-sm text-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim consequat.
+            {`Nous nous engageons à comprendre vos besoins, à vous offrir des
+            stratégies d'experts, et à collaborer étroitement avec vous pour
+            atteindre vos objectifs.`}
           </p>
         </div>
 
@@ -53,13 +53,13 @@ const ProjectVideoSection = ({
               />
             )}
             <p className="text-primary max-sm:text-center">
-              Duis aute irure dolor in reprehenderit in voluptate
+              {`Une feuille de route qui guide nos efforts vers l'excellence !`}
             </p>
           </div>
           <div className="">
-            <p className="text-xs text-darkText text-center block mb-2">
+            {/* <p className="text-xs text-darkText text-center block mb-2">
               Video de lexplication du project sur Funnelytics
-            </p>
+            </p> */}
 
             <div className="w-full h-72 ">
               <iframe
